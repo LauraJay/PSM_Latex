@@ -4,6 +4,10 @@
 \usepackage{times}
 \usepackage[ngerman]{babel}
 \usepackage{todonotes}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{hyperref} % ersetzen durch \usepackage{url} für Abgabe
+\usepackage{mathtools}
 
 \pagestyle{empty}
 
@@ -22,10 +26,11 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera-
 \maketitle
 \thispagestyle{empty}
 
-\large{\textbf{Zusammenfassung}}\\ \normalsize
+
+\large{\textbf{Zusammenfassung}}\\ \small %\normalsize
 \todo[inline, color=red]{Vera} 
 
-\large{\textbf{Schl\"usselw\"orter}}\\ \normalsize
+\large{\textbf{Schl\"usselw\"orter}}\\ \small %\normalsize
  Faltungsnetze, Videoproduktion
  \todo[inline, color=red]{Vera} 
 
@@ -34,11 +39,57 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera-
 \todo[inline, color=red]{Vera} 
 
 \Section {Grundlagen} \label{sec:Grundlagen}
-\todo[inline, color=red]{Laura} 
+\todo[inline, color=yellow]{Laura} 
+In Kapitel~\ref{sec:Videoproduktion} wird zunächst ein allgemeiner Überblick über die verschiedenen Arbeitsschritte einer Videoproduktion. Im drauf folgenden Kapitel werden die Grundlagen von NNs zusammengefasst. Um dann in Kapitel \ref{sec:Faltungsnetze} vertiefend auf Faltungsnetze einzugehen. 
 \SubSection{Videoproduktion} \label{sec:Videoproduktion}
 \todo[inline, color=red]{Laura} 
+\begin{figure}
+	\flushleft
+	\includegraphics[width=\columnwidth, trim = 20mm 145mm 45mm 40mm, clip]{Bilder/ArbeitsschritteVideoproduktion.pdf}
+	\caption{Grundlegende Arbeitsschritte einer Videoproduktion.}
+	\label{fig:Videoproduktion}
+\end{figure}
+\SubSection{Neuronale Netze} \label{sec:NeuronaleNetze}
+\todo[inline, color=yellow]{Laura} 
+
+NNs finden unter anderem Anwendung bei der Steuerung von Robotern, Börsenkursanalysen, Medizin oder Fahrzeugsteuerung. In der Bildverarbeitung werden NNs vor allem zur Klassifizierung genutzt. \\
+Sie sind vom menschlichen Gehirn inspiriert, welches laut \cite{NNHaykin} ein nicht-lineares, komplexes und hoch paralleles System zur Verarbeitung von Informationen darstellt. Ähnlich wie dieses bestehen künstliche NNs aus einer Menge an simulierten Neuronen, die untereinander verbunden sind und in Schichten organisiert sind. Es gibt verschiedene Arten der Vernetzung, die, wie in \cite{NNHaykin} und \cite{NNStanley} beschrieben, in rück- und vorwärts gekoppelte Modelle unterteilt werden können.\\
+
+\begin{figure}
+	\flushleft
+	\includegraphics[width=\columnwidth]{Bilder/structure-mlp.jpg}
+	\caption{Prinzipieller Aufbau MLP nach \cite{MDPI}.}
+	\label{fig:MLP}
+\end{figure}
+
+Am häufigsten kommen sogenannte \textit{Multilayer Perceptrons} (MLP)  \cite{NNBraun}\cite{NNNauck}\cite{NNStanley} zum Einsatz. Wie der Name vermuten lässt, werden hierbei die Neuronen in Schichten angeordnet. Ein solcher Aufbau ist beispielhaft in Abbildung~\ref{fig:MLP} zu sehen. Dieses MLP besteht aus eine Eingabe- und Ausgabeschicht mit $M$ bzw $K$ Neuronen und einer versteckten Schicht mit $N$ Neuronen. Es handelt sich um ein vorwärtsgekoppeltes Modell, bei welchem jedes Neuron einer Schicht mit jedem Neuron der darauffolgenden Schichte verbunden ist. Dies nennt man volle Verbindung. Die Eingangsschicht dient zum Verteilen der Eingangswerte $z_m$ mit $m=1,...,M$. Die Ausgabe eines jeden Neurons in der versteckten Schicht, dargestellt durch $x_n$, lässt sich durch Formel \ref{eq:AusgabeVerdeckteSchicht} berechnen. Hierbei steht $v_{nm}$ für die jeweilige Gewichtung der Verbindungen zwischen den Neuronen der Eingabe- und der versteckten Schicht und $f$ für die Aktivierungfunktion~\cite{NNStanley}\cite{NNHaykin} des jeweiligen Neurons. 
+
+\footnotesize
+\begin{equation} 
+x_n = f~(\sum_{m=1}^M v_{nm}z_m)
+	\label{eq:AusgabeVerdeckteSchicht}
+\end{equation}
+\small
+
+Die Ausgangswerte $y_k$, mit $k=1,...,K$, lassen sich äquivalent unter Hereinnahme der Werte $x_n$ und der Gewichte $w_{kn}$, sowie einer Aktivierungsfunktion $g$ berechnen, und gelten als Vertrauenswerte. Sie müssen gemäß der Aufgabenstellung interpretiert werden. 
+
+
 \SubSection{Faltungsnetze} \label{sec:Faltungsnetze}
 \todo[inline, color=red]{Laura} 
+Im Folgenden wird genauer auf Faltungsnetze eingegangen, da diese die Grundlage für die meisten der in den folgenden Kapiteln vorgestellten Ansätze bilden. Vereinfacht ausgedrückt besteht ein Faltungsnetz aus einer Vernetzung von Faltungsoperationen mit unterschiedliche Filtermasken. Faltungsnetze kommen, bedingt durch ihre Architektur, oft zum Einsatz, wenn große Datenmengen von einem NN verarbeitet werden sollen. Ein schematischer Aufbau ist in Abbildung~\ref{fig:CNN} zu sehen. 
+
+\begin{figure}
+	\flushleft
+	\includegraphics[width=\columnwidth]{Bilder/structure-cnn.jpg}
+	\caption{Prinzipieller Aufbau Faltungsnetz nach \cite{Osadchy}.}
+	\label{fig:CNN}
+\end{figure}
+
+
+
+%Vorteile NNs siehe Fotos from \cite{NNHaykin}
+
+
 
 \Section{Vorverarbeitung} \label{sec:Vorverarbeitung}
 \todo[inline, color=red]{Vera} 
@@ -48,6 +99,8 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera-
 \Section{Produktion} \label{sec:Produktion}
 \todo[inline, color=red]{Laura} 
 \SubSection{Aktueller Stand} \label{sec:SOTAProduktion}
+\todo[inline, color=red]{Laura} 
+\SubSection{Szenendynamik nach Vondrick} \label{sec:Vondrick}
 \todo[inline, color=red]{Laura} 
 
 \Section{Postproduktion} \label{sec:Postroduktion}
@@ -63,7 +116,7 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera-
 
 
 \bibliographystyle{latex8} 
-\bibliography{latex8}
+\bibliography{psm.bib}
 
 \end{document}
 

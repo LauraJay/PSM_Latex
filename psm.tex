@@ -6,7 +6,7 @@
 \usepackage{todonotes}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usepackage{hyperref} % ersetzen durch \usepackage{url} für Abgabe
+\usepackage[hyphens]{url}
 \usepackage{mathtools}
 \usepackage{amsmath}
 
@@ -43,7 +43,13 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera-
 \todo[inline, color=yellow]{Laura} 
 In Kapitel~\ref{sec:Videoproduktion} wird zunächst ein allgemeiner Überblick über die verschiedenen Arbeitsschritte einer Videoproduktion. Im drauf folgenden Kapitel werden die Grundlagen von NNs zusammengefasst. Um dann in Kapitel \ref{sec:Faltungsnetze} vertiefend auf Faltungsnetze einzugehen. 
 \SubSection{Videoproduktion} \label{sec:Videoproduktion}
-\todo[inline, color=red]{Laura} 
+\todo[inline, color=yellow]{Laura} 
+Mit der Videoproduktion oder auch Filmproduktion wird die Herstellung sowohl von Kino- als auch von Werbe- und Fernsehfilmen zusammengefasst. In Abbildung~\ref{fig:Videoproduktion} ist ein Ablaufplan einer typischen Videoproduktion zu sehen. Da es alleine in Deutschland über 850 Produktionsformen gibt~\cite{formatt} (Stand 2014), kann der Ablaufplan nur einen sehr allgemeinen Überblick über die notwendigen Arbeitsschritte bieten. \\
+Der erste Schritt, die Konzeption soll sowohl die Projektentwicklung, als auch die Vorproduktion zusammenfassen. Die sich anschließende Produktionsphase kann grob, wie im Schaubild zu sehen in Bild und Ton unterteilt werden, wobei diese beiden Bereiche nicht immer getrennt betrachtet werden sollten. Die Postproduktion besteht aus vielen verschiedenen Arbeitsschritten, deren Schwerpunkt auf dem Schnitt und der digitalen Bildnachbearbeitung liegt. Der Schritt der Distribution ist hier der Vollständigkeit halber erwähnt und beschreibt die Filmverwertung. \\
+
+Der Aufbau der folgenden Ausführungen orientiert sich an Abbildung~\ref{fig:Videoproduktion} (vgl. Kapitel~\ref{sec:Vorverarbeitung},~\ref{sec:Produktion} und~\ref{sec:Postroduktion}).
+
+
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth, trim = 20mm 145mm 45mm 40mm, clip]{Bilder/ArbeitsschritteVideoproduktion.pdf}
@@ -76,7 +82,7 @@ Die Ausgangswerte $y_k$, mit $k=1,...,K$, lassen sich äquivalent unter Hereinna
 
 
 \SubSection{Faltungsnetze} \label{sec:Faltungsnetze}
-\todo[inline, color=red]{Laura} 
+\todo[inline, color=yellow]{Laura} 
 Im Folgenden wird genauer auf Faltungsnetze eingegangen, da diese die Grundlage, für die meisten der in den folgenden Kapiteln vorgestellten Ansätze, bilden. Vereinfacht ausgedrückt besteht ein Faltungsnetz aus einer Vernetzung von Faltungsoperationen mit unterschiedliche Filtermasken. Faltungsnetze kommen, bedingt durch ihre Architektur, oft zum Einsatz, wenn große Datenmengen von einem NN verarbeitet werden sollen. Ein schematischer Aufbau ist in Abbildung~\ref{fig:CNN} zu sehen. 
 
 \begin{figure}
@@ -145,7 +151,7 @@ Wie zu Beginn des Kapitels erwähnt, haben Faltungsnetze gegenüber den MLPs den
 
 
 
-
+\Urlmuskip=0mu plus 1mu\relax %Bricht Link in Bibfile um
 \bibliographystyle{latex8} 
 \bibliography{psm.bib}
 

@@ -21,7 +21,7 @@
 Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\  laura.anger@th-koeln.de \\
 \and
 Vera Brockmeyer\\
-Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera-brockmeyer@smail.th-koeln.de \\
+Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera.brockmeyer@smail.th-koeln.de \\
 }
 
 \maketitle
@@ -41,7 +41,7 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera-
 
 \Section {Grundlagen} \label{sec:Grundlagen}
 \todo[inline, color=yellow]{Laura} 
-In Kapitel~\ref{sec:Videoproduktion} wird zunächst ein allgemeiner Überblick über die verschiedenen Arbeitsschritte einer Videoproduktion. Im drauf folgenden Kapitel werden die Grundlagen von NNs zusammengefasst. Um dann in Kapitel \ref{sec:Faltungsnetze} vertiefend auf Faltungsnetze einzugehen. 
+In Kapitel~\ref{sec:Videoproduktion} wird zunächst ein allgemeiner Überblick über die verschiedenen Arbeitsschritte einer Videoproduktion. Im drauf folgenden Kapitel werden die Grundlagen von NNs zusammengefasst. Um dann in Kapitel \ref{sec:Faltungsnetze} vertiefend auf Faltungsnetze einzugehen, deren Training in Kapitel~\ref{sec:Training} zusammengefasst wird. 
 \SubSection{Videoproduktion} \label{sec:Videoproduktion}
 \todo[inline, color=yellow]{Laura} 
 Mit der Videoproduktion oder auch Filmproduktion wird die Herstellung sowohl von Kino- als auch von Werbe- und Fernsehfilmen zusammengefasst. In Abbildung~\ref{fig:Videoproduktion} ist ein Ablaufplan einer typischen Videoproduktion zu sehen. Da es alleine in Deutschland über 850 Produktionsformen gibt~\cite{formatt} (Stand 2014), kann der Ablaufplan nur einen sehr allgemeinen Überblick über die notwendigen Arbeitsschritte bieten. \\
@@ -159,14 +159,55 @@ Weil alle Gewichtungen mittels des \textit{back-propagation} Algorithmus währen
 
 \Section{Produktion} \label{sec:Produktion}
 \todo[inline, color=red]{Laura} 
+\textcolor{red}{muss angepasst werden} \\
 In diesem Kapitel werden zunächst Ansätze vorgestellt, die auf Grundlage von NNs Arbeitsschritte bei der Produktion von Videos übernehmen bzw. vereinfachen könnten (vgl. Kapitel~\ref{sec:SOTAProduktion}). Dazu ist an zu merken, dass diese Ansätze meist in einem anderen Kontext entwickelt wurden und ggf. eine Anpassung an die Standards einer Produktion stattfinden müsste. \\
 
 In Kapitel~\ref{sec:Vondrick} wird ein Ansatz zur automatisierten Generierung von Szenendynamiken in Hinsicht auf Funktionsweise und Arbeitserleichterung für die Videoproduktion analysiert. 
-\SubSection{Aktueller Stand} \label{sec:SOTAProduktion}
-\todo[inline, color=red]{Laura} 
-\SubSubSection{Ton}
-- Algo Rythm: %https://medium.com/@granttimmerman/algo-rhythm-music-composition-using-neural-networks-f89897ff2df7
+
+
+\SubSection{Aktueller Stand Musikgenerierung} \label{sec:SOTAProduktion}
+\todo[inline, color=yellow]{Laura} 
+Es gibt verschiedene Ansätze NNs zu nutzen, um Musik automatisiert generieren zu lassen. Im Folgenden werden drei Ansätze kurz vorgestellt, welche alle rückgekoppelte Neuronale Netze (RNN) benutzen. \\
+An der \textit{University of Washington} ist im Rahmen einer Projektarbeit ein Musik Generator namens \textit{Algo Rythm} entstanden~\cite{Algorithm}. Für die Umsetzung habend die Studierenden um Timmerman RNNs geeignet trainiert. Der Quellcode kann auf Github \cite{AlgorithmGit} eingesehen werden.\\
+Ein weiterer Ansatz, der in \cite{eck+lapalme:2008} beschrieben wird, arbeitet ebenfalls mit einem RNN, welches mit einem Autokorrelation-basierte Prädiktor kombiniert wird. Dabei soll die Struktur von Musikstücken erlernt werden, indem zunächst die folgende Note einer Tonreihenfolge vorausgesagt werden soll. \\
+Der letzte Ansatz benutzt ebenfalls RNNs um auf Grundlage einer Notensequenz eine Musikstück zu komponieren \cite{browne2001system}. Dabei wird die Eingabesequenz zunächst interpretiert. Anschließend sorgen zwei RNN basierte Algorithmen für die Produktion von sowohl Rhythmus, als auch die Vorhersage der nächsten Note. \\
+
+Alle drei Ansätze weisen hohes Potential auf, wenn es darum geht Musikstücke automatisiert zu generieren. Über das Genre des zugeführten Musikmaterials lässt sich die gewünschte Ausgabe begrenzt steuern. Es wäre durchaus vorstellbar, so Musik für eine Filmproduktion zu generieren.
+
+
+
+
+
+
 \SubSection{Szenendynamik nach Vondrick} \label{sec:Vondrick}
+\todo[inline, color=red]{Laura} 
+
+\begin{figure}
+	\flushleft
+	\includegraphics[width=\columnwidth]{Bilder/generator2.jpg}
+	\caption{Generator nach \cite{Vondrick}.}
+	\label{fig:generator}
+\end{figure}
+
+
+\begin{figure}
+	\flushleft
+	\includegraphics[width=\columnwidth]{Bilder/discriminator.jpg}
+	\caption{Diskriminator nach \cite{Vondrick}.}
+	\label{fig:discriminator}
+\end{figure}
+
+\begin{figure}
+	\flushleft
+	\includegraphics[width=\columnwidth]{Bilder/disAndGen.jpg}
+	\caption{Diskriminator und Generator.}
+	\label{fig:disAndGen}
+\end{figure}
+
+
+
+
+\SubSection{Bewertung des Ansatzes von Vondrick} \label{sec:VondrickConclusion}
 \todo[inline, color=red]{Laura} 
 
 \Section{Postproduktion} \label{sec:Postroduktion}

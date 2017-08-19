@@ -180,8 +180,17 @@ Alle drei Ansätze weisen hohes Potential auf, wenn es darum geht Musikstücke a
 
 
 
-\SubSection{Szenendynamik nach Vondrick} \label{sec:Vondrick}
+\SubSection{Szenendynamik nach Vondrick et al.} \label{sec:Vondrick}
 \todo[inline, color=red]{Laura} 
+Mit dem Ansatz von Vondrick et al.~\cite{Vondrick} können aus Einzelbildern ganze Szenen Dynamiken erstellt werden, welche zum einen für die Klassifizierung und zum anderen für die Vorhersage von Bewegung genutzt werden kann. Das Resultat sind kleine Videos mit einer Auflösung von 65x64 Pixeln und 32 Einzelbildern. \\
+
+Die Grundlage für dieses Verfahren bilden zwei Faltungsnetze, welche als Gegenspieler trainiert werden. \textit{Generative Adversarial Networks} (GAN) \cite{NIPS2014_5423} Dieses Konzept basiert auf einem Generator und Diskriminator und w
+gegeneinander Trainieren siehe Formel (1)
+
+unsupervised learning. 
+Trainiert nach Kategorien
+
+
 
 \begin{figure}
 	\flushleft
@@ -210,6 +219,27 @@ Alle drei Ansätze weisen hohes Potential auf, wenn es darum geht Musikstücke a
 
 \SubSection{Bewertung des Ansatzes von Vondrick} \label{sec:VondrickConclusion}
 \todo[inline, color=red]{Laura} 
+
+Vorteile Verfahren:
+- automatisierte Vorverarbeitung des Lernmaterials möglich
+- Vorverarbeitung muss nur einmal gemacht werden
+- Trainingsmaterial für G kann auch für D genutzt werden
+- Bewegungen werden nach Kategorien gelernt
+
+Vorteile in Bezug auf Videoproduktion:
+- Verständnis der Szenen Dynamik wird wichtiger
+- planen höhere Auflösung
+- Denkbar für Realisierung von bspw. GIFs
+- Simulationen oder Vorhersagen 
+
+Nachteile:
+- bedarf viel Trainingsmaterial
+- Kategorien ohne Vernunft ausgewählt
+- Realismusgrad nicht ausreichend
+- Es gibt noch keine höhere Auflösung
+
+
+
 
 \Section{Postproduktion} \label{sec:Postroduktion}
 \todo[inline, color=red]{Vera} 

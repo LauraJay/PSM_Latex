@@ -38,7 +38,21 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera.
 
 
 \Section{Einleitung} \label{sec:Einleitung}
-\todo[inline, color=red]{Vera} 
+\todo[inline, color=yellow]{Vera} 
+Die Videoproduktion konnte sich im Zuge der Digitalisierung im letzten Jahrzehnt enorm qualitativ verbessern. Jeder der vier Produktionabschnitte (siehe Abbildung~\ref{fig:Videoproduktion}) konnte verbessert und vor allem erleichtert werden. In der Konzeptionsphase konnten die Arbeitsprozesse mit Hilfe des Internets erleichtert werden durch den beschleunigten weltweiten Austausch von Skripten oder den standort-unabhängigen Zugriff auf cloudbasierte Projektmanagement Systeme.
+
+Während der Produktion des Videomaterials unterstützen moderne digitale Kamerasysteme den Kameramann indem sie den Weißabgleich und die Belichtung automatisch berechnen und einstellen. Selbst geringfügige unruhige Bewegungen werden mit Bildstabilisatoren direkt unterdrückt. 
+
+Die darauffolgenden Arbeitsprozesse, wie das Schneiden und Editieren des Videomaterials währen der Postproduktionsphase, wurden in den letzten Jahren vereinfacht oder können teilweise durch zuverlässige Algorithmen automatisch durchgeführt werden. Mittlerweile können realistisch virtuelle Bildinhalte von CGI Experten mit entsprechender Rechenkapazität in das gedrehte Videomaterial nahtlos rendert werden. Dies ermöglicht es Produktionen fast ausschließlich im Studio zu produzieren und sogar aufwendige Fantasywelten oder aufwendige Stunts mit geringeren Kosten umzusetzen.
+
+Doch gerade qualitativ hochwertige Videoproduktionen erfordern immer noch einen sehr hohen Arbeitsaufwand mit einer große Anzahl an professionellen Mitarbeitern und teuren Materialien. Einen großen Anteil daran hat die Postproduktion in der jede Szene separat editiert und an das Gesamtbild angepasst werden muss. Dieses Gesamtbild muss vorab genau festgelegt werden, denn eine spätere Korrektur erfordert eine vollständige Wiederholung der meisten Arbeitsschritte. Aber auch die Generierung von Bildmaterialien für kurze Schnittszenen oder Webvideos ist sehr zeitaufwändig und teuer. Ein mehrköpfiges Team mit dem umfangreichen Equipment muss zum Drehort gebracht werden. 
+
+In der Zukunft gilt es diesen Arbeits- und Kostenaufwand weiter zu reduzieren indem die einzelnen Arbeitsschritte automatisiert oder teil-automatisiert werden. Dies erfordert Ansätze die komplexe Zusammenhänge und Erfahrungen wie das menschliche Gehirn vereinen können. Sie sollten im idealen Fall Kreativität umsetzen, Bewegungen und Abläufe voraussagen, bekannte Eigenschaften sinnvoll kombinieren oder erlernte Informationen übertragen und anwenden können. Diese Anforderungen können mit einer Form von künstlichen Intelligenz, den neuronalen Netzen (NN) (siehe Abschnitt~\ref{sec:Faltungsnetze}), erfolgreich erfüllt werden, die jenen des menschlichen Gehirn nachempfunden sind. In den letzten Jahren wurden NN stetig weiterentwickelt und es konnten vor allem im Bereich der Medienproduktion bahnbrechende Erfolge erzielt werden. Die vielversprechendsten Erfolge konnten mit einer besonderen Form der NN erzielt werden. Diese Faltungsnetze (CNN) (siehe Abschnitt~\ref{sec:Faltungsnetze}) ermöglichen orts- und skalierungs-unabhängige Operationen und somit ideal für mehrdimensionale digitale Signale.\\
+
+Zu Beginn wurden CNN zur Objektklassifizierung eingesetzt um unter anderem automatisch Metadaten von Bild- oder Videodaten zu generieren und in Datenbanken oder Suchmaschinen einzupflegen. Ein bekannter Ansatz ist \textit{Clarifai}~\cite{MITReview}, welcher eine Bibliothek mit konfigurierten CNN anbietet um optimierte Datenbanken anzulegen und zu verwalten. In den letzten Jahren wurden sie auch verstärkt für die Generierung oder Fortsetzung von bekannten Daten oder Signalen eingesetzt. Es konnten klassische Musikstücke sinnvoll beliebig verlängert werden~\cite{OordDZSVGKSK16} oder bewegte Sequenzen aus einzelnen Bildern generiert werden~\cite{VondrickPT16}. Auch in der Postproduktion konnten neue Bilder erstellt werden~\cite{DeepDream}. \\
+
+In den folgenden Kapiteln wird in den Grundlagen (siehe Kapitel~\ref{sec:Grundlagen}) auf den allgemeine Ablauf in der Videoproduktion sowie detailliert die Funktionsweise der NN und CNN beschrieben. Im Anschluss werden in den folgenden Kapiteln verschiedene Entwicklungen von Videoproduktionsmittel vorgestellt, welche verschiedene Formen von NN und im besonderen von CNN nutzen. Drei Ansätze werden detailliert beschrieben und bewertet. Der erste Ansatz~\cite{VondrickPT16} beschreibt in Anschnitt~\ref{sec:Vondrick} die Generierung von eine bewegten Bildsequenz aus einem Einzelbild. Die anderen Ansätze~ \cite{DeepDream}~\cite{GatysEB15a} erläutert die Übertragung eines Bildstils auf eine andere Videosequenz.
+
 
 \Section {Grundlagen} \label{sec:Grundlagen}
 \todo[inline, color=yellow]{Laura} 
@@ -153,10 +167,13 @@ Weil alle Gewichtungen mittels des \textit{back-propagation} Algorithmus währen
 
 
 
-\Section{Vorverarbeitung} \label{sec:Vorverarbeitung}
-\todo[inline, color=red]{Vera} 
+\Section{Konzeption} \label{sec:Konzeption}
+\todo[inline, color=yellow]{Vera} 
+Vor der eigentlichen Videoproduktion muss das Vorhaben zunächst konzipiert und detailliert geplant werden. Dies bezieht sich vor allem auf die kreativen Prozesse des Drehbuchschreibens und darauffolgend die gesamte Projektplanung und -vorbereitung. Naturgemäß sind NN weniger sinnvoll für die Planung von Projekten. Doch in den letzten Jahren wurde damit begonnen zu erforschen, ob sich mit Hilfe von NN kreative Prozesse umsetzen lassen und sie eine eigene Kreativität entwickeln können. In diesem Sinne ist Kreativität auch mit sinnvollen selbstständigem Denken oder Entscheiden gleichzusetzen, was  im Entstehungsprozess von Drehbüchern unumgänglich ist.
+
 \SubSection{Aktueller Stand} \label{sec:SOTAVorverarbeitung}
-\todo[inline, color=red]{Vera} 
+\todo[inline, color=yellow]{Vera} 
+Es gibt bereits erste Versuche mit Hilfe von NN automatisch sinnvolle Texte oder Dialoge zu erstellen, die auf bekannten Texten und Storylines basieren.
 
 \Section{Produktion} \label{sec:Produktion}
 \todo[inline, color=red]{Laura} 
@@ -254,7 +271,7 @@ Nachteile:
 
 \Urlmuskip=0mu plus 1mu\relax %Bricht Link in Bibfile um
 \bibliographystyle{latex8} 
-\bibliography{psm.bib}
+\bibliography{psm}
 
 \end{document}
 

@@ -9,6 +9,7 @@
 \usepackage[hyphens]{url}
 \usepackage{mathtools}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage[font=small,labelfont=bf]{caption}
 
 \pagestyle{empty}
@@ -31,86 +32,78 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera.
 
 \large{\textbf{Zusammenfassung}}\\ \small %\normalsize
 \todo[inline, color=red]{Vera} 
+ Auf Grund des hohem Zeit- und Kostenaufwand der Videoproduktion ist es notwendig einzelne Teilprozesse zu vereinfachen und zu automatisieren. Gerade in den Teilbereichen Produktion und Postproduktion gibt es enormes Potential für eine Automatisierung. Diese beschäftigen sich überwiegend mit der Erstellung und Bearbeitung von Bild- und Audiodaten. In den letzten Jahren konnten enorme Erfolge in der Bild- und Audiodatenverarbeitung mit Neuronalen Netzen (NN) erzielt werden. Im besonderen erwiesen sich Faltungsnetze (CNN) als zuverlässige und robuste Automatisierungsalgorithmen. Diese CNN können sowohl zur Klassifikation als auch zur Videodatengenerierung genutzt werden. Verfahren die Deep Dream und Deep Style können die Stilsemantik eines Bildes auf ein weiteres unabhängiges Bild übertragen. Während Deep Style viele Kriterien der Videoproduktion abgesehen vom hohen Rechenaufwand erfüllt, ist das Deep Dream Verfahren durch mangelnde Reproduzierbarkeit und Einflussnahme ungeeignet. Neben der Stilsnythese können auch Szenendynamiken aus einem Einzelbild produziert werden für die Generierung von kurzen Sequenzen.
+ Diese benannten Verfahren sind nicht für die Videoproduktion entwickelt worden und werden detailliert beschrieben und auf ihre Tauglichkeit für die professionelle Produktion. \\
+
 
 \large{\textbf{Schl\"usselw\"orter}}\\ \small %\normalsize
  Faltungsnetze, Videoproduktion, Stilsynthese, Bewegtbildgenerierung, Deep Writing
- \todo[inline, color=red]{Vera} 
+
 
 
 \Section{Einleitung} \label{sec:Einleitung}
 \todo[inline, color=yellow]{Vera} 
-Die Videoproduktion konnte sich im Zuge der Digitalisierung im letzten Jahrzehnt enorm qualitativ verbessern. Jeder der vier Produktionabschnitte (siehe Abbildung~\ref{fig:Videoproduktion}) konnte verbessert und nachhaltig erleichtert werden. In der Konzeptionsphase konnten die Arbeitsprozesse mit Hilfe des Internets erleichtert werden durch den beschleunigten weltweiten Austausch von Skripten oder den standort-unabhängigen Zugriff auf cloudbasierte Projektmanagement Systeme.
+Die Videoproduktion konnte sich im Zuge der Digitalisierung im letzten Jahrzehnt enorm qualitativ verbessern. Jeder der vier Produktionsabschnitte (siehe Abbildung~\ref{fig:Videoproduktion}) konnte verbessert und nachhaltig erleichtert werden. In der Konzeptionsphase konnten die Arbeitsprozesse mit Hilfe des Internets erleichtert werden durch den beschleunigten weltweiten Austausch von Skripten oder den standort-unabhängigen Zugriff auf cloudbasierte Projektmanagement Systeme. Während der Produktion des Videomaterials unterstützen moderne digitale Kamera- und Produktionssysteme aktiv den Kameramann. Die darauffolgenden Arbeitsprozesse, wie das Schneiden und Editieren des Videomaterials währen der Postproduktionsphase, wurden in den letzten Jahren vereinfacht oder können teilweise durch zuverlässige Algorithmen automatisch durchgeführt werden. Mittlerweile können durch \textit{Computer Generated Imaging} (CGI) Produktionen fast ausschließlich im Studio zu produziert und selbst aufwendige Fantasywelten oder aufwendige Stunts mit geringeren Kosten umgesetzt werden.
 
-Während der Produktion des Videomaterials unterstützen moderne digitale Kamerasysteme den Kameramann indem sie den Weißabgleich und die Belichtung automatisch berechnen und einstellen. Selbst geringfügige unruhige Bewegungen werden mit Bildstabilisatoren direkt unterdrückt.  \textcolor{red}{Bin wohl echt n Phototechniker :-D Hast du evtl. n Tipp für z.b. vernetze Produktionssysteme}
+Doch gerade qualitativ hochwertige Videoproduktionen erfordern immer noch einen sehr hohen Arbeitsaufwand mit einer große Anzahl an professionellen Mitarbeitern und kostenaufwändigen Materialien. Einen großen Anteil daran hat die Postproduktion in der jede Szene separat editiert und an das Gesamtbild angepasst werden muss. Dieses Gesamtbild muss vorab genau festgelegt werden und erlaubt keine Experimente in der Stilfindung. Aber auch die Generierung von Bildmaterialien für kurze Schnittszenen oder Webvideos ist sehr zeitaufwändig und kostenintensiv. Ein mehrköpfiges Team mit dem umfangreichen Equipment muss zum Drehort transportiert und untergebracht werden. Auch äußere Einflüsse, wie zum Beispiel das Wetter, können den Zeitplan verzögern und zusätzliche Kosten verursachen. Für Studioaufnahmen müssen in der Regel entsprechende Ressourcen angemietet oder in Stand gehalten werden.
 
-Die darauffolgenden Arbeitsprozesse, wie das Schneiden und Editieren des Videomaterials währen der Postproduktionsphase, wurden in den letzten Jahren vereinfacht oder können teilweise durch zuverlässige Algorithmen automatisch durchgeführt werden. Mittlerweile können realistisch virtuelle Bildinhalte von \textit{Computer Generated Imaging} (CGI) Experten mit entsprechender Rechenkapazität in das gedrehte Videomaterial nahtlos rendert werden. Dies ermöglicht es Produktionen fast ausschließlich im Studio zu produzieren und sogar aufwendige Fantasywelten oder aufwendige Stunts mit geringeren Kosten umzusetzen.
+In der Zukunft gilt es diesen Arbeits- und Kostenaufwand weiter zu reduzieren indem die einzelnen Arbeitsschritte automatisiert oder teil-automatisiert werden. Eine andere Vision ist es kurze Videoszenen für Webvideos oder Schnittszenen künstlich auf Basis von einzelnen Photographien am Computer zu erstellen. Dies erfordert Ansätze die komplexe Zusammenhänge und Erfahrungen ähnlich wie das menschliche Gehirn leisten können. Sie sollten kreativ sein, Bewegungen und Abläufe voraussagen, bekannte Eigenschaften sinnvoll kombinieren oder erlernte Informationen übertragen und anwenden können. Diese Anforderungen erfüllen künstlichen Intelligenzen, wie NN (siehe Abschnitt~\ref{sec:Faltungsnetze}), die jenen des menschlichen Gehirn nachempfunden sind \cite{McCaigDG16}. In den letzten Jahren wurden sie stetig weiterentwickelt und es konnten vor allem im Bereich der Medienproduktion vielversprechende Erfolge erzielt werden. Die größten Erfolge konnten mit CNN erzielt werden. Diese (siehe Abschnitt~\ref{sec:Faltungsnetze}) ermöglichen orts- und skalierungs-unabhängige Operationen und somit ideal für mehrdimensionale digitale Signale geeignet.\\
 
-Doch gerade qualitativ hochwertige Videoproduktionen erfordern immer noch einen sehr hohen Arbeitsaufwand mit einer große Anzahl an professionellen Mitarbeitern und kostenaufwändigen Materialien. Einen großen Anteil daran hat die Postproduktion in der jede Szene separat editiert und an das Gesamtbild angepasst werden muss. Dieses Gesamtbild muss vorab genau festgelegt werden, denn eine spätere Korrektur erfordert eine vollständige Wiederholung der meisten Arbeitsschritte. Aber auch die Generierung von Bildmaterialien für kurze Schnittszenen oder Webvideos ist sehr zeitaufwändig und kostenintensiv. Ein mehrköpfiges Team mit dem umfangreichen Equipment muss zum Drehort gebracht werden und unter Umständen auch untergebracht werden. Auch äußere Einflüsse, wie zum Beispiel das Wetter, können den Zeitplan verzögern und es entstehen zusätzliche Kosten. Für Studioaufnahmen muss in den meisten Fällen entsprechende Ressourcen angemietet oder auf Dauer gepflegt und in Stand gehalten werden.
+Zu Beginn wurden CNN zur Objektklassifizierung eingesetzt um unter anderem automatisch Metadaten von Bild- oder Videodaten zu generieren und in Datenbanken oder Suchmaschinen einzupflegen. In den letzten Jahren wurden sie auch verstärkt für die Generierung oder Fortsetzung von bekannten Daten oder Signalen eingesetzt. Es konnten klassische Musikstücke sinnvoll beliebig verlängert werden~\cite{OordDZSVGKSK16} oder bewegte Sequenzen aus einzelnen Bildern generiert werden~\cite{VondrickPT16}. Auch in der Postproduktion konnten Bildern einer Stil aufgeprägt werden~\cite{DeepDream}. \\
 
-In der Zukunft gilt es diesen Arbeits- und Kostenaufwand weiter zu reduzieren indem die einzelnen Arbeitsschritte automatisiert oder teil-automatisiert werden. Eine andere Vision ist es kurze Videoszenen für Webvideos oder Schnittszenen künstlich auf Basis von einzelnen Photographien am Computer zu erstellen. Dies erfordert Ansätze die komplexe Zusammenhänge und Erfahrungen wie das menschliche Gehirn vereinen können. Sie sollten im idealen Fall Kreativität umsetzen, Bewegungen und Abläufe voraussagen, bekannte Eigenschaften sinnvoll kombinieren oder erlernte Informationen übertragen und anwenden können. Diese Anforderungen können mit einer Form von künstlichen Intelligenz, den neuronalen Netzen (NN) (siehe Abschnitt~\ref{sec:Faltungsnetze}), erfolgreich erfüllt werden, die jenen des menschlichen Gehirn nachempfunden sind \cite{McCaigDG16}. In den letzten Jahren wurden NN stetig weiterentwickelt und es konnten vor allem im Bereich der Medienproduktion bahnbrechende Erfolge erzielt werden. Die vielversprechendsten Erfolge konnten mit einer besonderen Form der NN erzielt werden. Diese Faltungsnetze (CNN) (siehe Abschnitt~\ref{sec:Faltungsnetze}) ermöglichen orts- und skalierungs-unabhängige Operationen und somit ideal für mehrdimensionale digitale Signale.\\
-
-Zu Beginn wurden CNN zur Objektklassifizierung eingesetzt um unter anderem automatisch Metadaten von Bild- oder Videodaten zu generieren und in Datenbanken oder Suchmaschinen einzupflegen. In den letzten Jahren wurden sie auch verstärkt für die Generierung oder Fortsetzung von bekannten Daten oder Signalen eingesetzt. Es konnten klassische Musikstücke sinnvoll beliebig verlängert werden~\cite{OordDZSVGKSK16} oder bewegte Sequenzen aus einzelnen Bildern generiert werden~\cite{Vondrick}. Auch in der Postproduktion konnten Bildern einer Stil aufgeprägt werden~\cite{DeepDream}. \\
-
-In den folgenden Kapiteln wird in den Grundlagen (siehe Kapitel~\ref{sec:Grundlagen}) auf den allgemeine Ablauf in der Videoproduktion sowie detailliert die Funktionsweise der NN und CNN beschrieben. Im Anschluss werden in den folgenden Kapiteln verschiedene Entwicklungen von Videoproduktionsmittel vorgestellt, welche verschiedene Formen von NN und im besonderen von CNN nutzen. Drei Ansätze werden detailliert beschrieben und bewertet. Der erste Ansatz~\cite{Vondrick} beschreibt in Anschnitt~\ref{sec:Vondrick} die Generierung von eine bewegten Bildsequenz aus einem Einzelbild. Die anderen Ansätze~ \cite{DeepDream}~\cite{GatysEB15a} erläutert die Übertragung eines Bildstils auf eine andere Videosequenz.
+In den folgenden Kapiteln wird in den Grundlagen (siehe Kapitel~\ref{sec:Grundlagen}) auf den allgemeine Ablauf in der Videoproduktion sowie detailliert die Funktionsweise der NN und CNN beschrieben. Im Anschluss werden in den folgenden Kapiteln verschiedene Entwicklungen von Videoproduktionsmittel vorgestellt, welche verschiedene Formen von NN und im besonderen von CNN nutzen. Drei Ansätze werden detailliert beschrieben und bewertet. Der erste Ansatz~\cite{VondrickPT16} beschreibt in Anschnitt~\ref{sec:Vondrick} die Generierung von eine bewegten Bildsequenz aus einem Einzelbild. Die anderen Ansätze~ \cite{DeepDream}~\cite{GatysEB15a} erläutert die Übertragung eines Bildstils auf eine andere Videosequenz.
 
 
 \Section {Grundlagen} \label{sec:Grundlagen}
 \todo[inline, color=yellow]{Laura} 
-In Kapitel~\ref{sec:Videoproduktion} wird zunächst ein allgemeiner Überblick über die verschiedenen Arbeitsschritte einer Videoproduktion. Im drauf folgenden Kapitel werden die Grundlagen von NNs zusammengefasst. Um dann in Kapitel \ref{sec:Faltungsnetze} vertiefend auf Faltungsnetze einzugehen, deren Training in Kapitel~\ref{sec:Training} zusammengefasst wird. 
+Um gezielter Ansatzpunkte für den Einsatz von NNs in der Videoproduktion aufzeigen zu können, wird diese in Kapitel~\ref{sec:Videoproduktion} kurz beschrieben. Der Schwerpunkt dieses Kapitels liegt jedoch auf den Grundlagen von NNs und insbesondere CNNs, sowie deren Training.
+
 \SubSection{Videoproduktion} \label{sec:Videoproduktion}
 \todo[inline, color=yellow]{Laura} 
-Mit der Videoproduktion oder auch Filmproduktion wird die Herstellung sowohl von Kino- als auch von Werbe- und Fernsehfilmen zusammengefasst. In Abbildung~\ref{fig:Videoproduktion} ist ein Ablaufplan einer typischen Videoproduktion zu sehen. Da es alleine in Deutschland über 850 Produktionsformen gibt~\cite{formatt} (Stand 2014), kann der Ablaufplan nur einen sehr allgemeinen Überblick über die notwendigen Arbeitsschritte bieten. \\
-Der erste Schritt, die Konzeption soll sowohl die Projektentwicklung, als auch die Vorproduktion zusammenfassen. Die sich anschließende Produktionsphase kann grob, wie im Schaubild zu sehen in Bild und Ton unterteilt werden, wobei diese beiden Bereiche nicht immer getrennt betrachtet werden sollten. Die Postproduktion besteht aus vielen verschiedenen Arbeitsschritten, deren Schwerpunkt auf dem Schnitt und der digitalen Bildnachbearbeitung liegt. Der Schritt der Distribution ist hier der Vollständigkeit halber erwähnt und beschreibt die Filmverwertung. \\
-
-Der Aufbau der folgenden Ausführungen orientiert sich an Abbildung~\ref{fig:Videoproduktion} (vgl. Kapitel~\ref{sec:Konzeption},~\ref{sec:Produktion} und~\ref{sec:Postroduktion}).
-
-
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth, trim = 20mm 145mm 45mm 40mm, clip]{Bilder/ArbeitsschritteVideoproduktion.pdf}
 	\caption{Grundlegende Arbeitsschritte einer Videoproduktion.}
 	\label{fig:Videoproduktion}
 \end{figure}
+Mit der Videoproduktion oder auch Filmproduktion wird die Herstellung sowohl von Kino- als auch von Werbe- und Fernsehfilmen zusammengefasst. In Abbildung~\ref{fig:Videoproduktion} ist ein Ablaufplan einer typischen Videoproduktion zu sehen. Da es alleine in Deutschland über 850 Produktionsformen gibt (Stand 2014)~\cite{formatt}, kann der Ablaufplan nur einen sehr allgemeinen Überblick über die notwendigen Arbeitsschritte bieten. \\
+Der erste Schritt, die Konzeption soll sowohl die Projektentwicklung, als auch die Vorproduktion zusammenfassen. Die sich anschließende Produktionsphase kann grob, wie im Schaubild zu sehen in Bild und Ton unterteilt werden, wobei diese beiden Bereiche nicht immer getrennt voneinander betrachtet werden sollten. Die Postproduktion besteht aus vielen verschiedenen Arbeitsschritten, deren Schwerpunkt auf dem Schnitt und der digitalen Bildnachbearbeitung liegt. Der Schritt der Distribution ist hier der Vollständigkeit halber erwähnt und beschreibt die Filmverwertung. \\
+Der Aufbau der folgenden Ausführungen orientiert sich an Abbildung~\ref{fig:Videoproduktion} (vgl. Kapitel~\ref{sec:Konzeption},~\ref{sec:Produktion} und~\ref{sec:Postroduktion}).
+
+
+
 \SubSection{Neuronale Netze} \label{sec:NeuronaleNetze}
 \todo[inline, color=yellow]{Laura} 
-
 NNs finden unter anderem Anwendung bei der Steuerung von Robotern, Börsenkursanalysen, Medizin oder Fahrzeugsteuerung. In der Bildverarbeitung werden NNs vor allem zur Klassifizierung genutzt. \\
-Sie sind vom menschlichen Gehirn inspiriert, welches laut \cite{NNHaykin} ein nicht-lineares, komplexes und hoch paralleles System zur Verarbeitung von Informationen darstellt. Ähnlich wie dieses bestehen künstliche NNs aus einer Menge an simulierten Neuronen, die untereinander verbunden sind und in Schichten organisiert sind. Es gibt verschiedene Arten der Vernetzung, die, wie in \cite{NNHaykin} und \cite{NNStanley} beschrieben, in rück- und vorwärts gekoppelte Modelle unterteilt werden können.\\
-
+Sie sind vom menschlichen Gehirn inspiriert, welches laut~\cite{NNHaykin} ein nicht-lineares, komplexes und hoch paralleles System zur Verarbeitung von Informationen darstellt. Ähnlich wie dieses bestehen künstliche NNs aus einer Menge an simulierten Neuronen, die untereinander verbunden sind und in Schichten organisiert sind. Es gibt verschiedene Arten der Vernetzung, die, wie in \cite{NNHaykin} und \cite{NNStanley} beschrieben, in rück- und vorwärts gekoppelte Modelle unterteilt werden können.\\
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth]{Bilder/structure-mlp.jpg}
 	\caption{Prinzipieller Aufbau MLP nach~\cite{MDPI}.}
 	\label{fig:MLP}
 \end{figure}
-
-Am häufigsten kommen sogenannte \textit{Multilayer Perceptrons} (MLP)  \cite{NNBraun}\cite{NNNauck}\cite{NNStanley} zum Einsatz. Wie der Name vermuten lässt, werden hierbei die Neuronen in Schichten angeordnet. Ein solcher Aufbau ist beispielhaft in Abbildung~\ref{fig:MLP} zu sehen. Dieses MLP besteht aus eine Eingabe- und Ausgabeschicht mit $M$ bzw $K$ Neuronen und einer versteckten Schicht mit $N$ Neuronen. Es handelt sich um ein vorwärtsgekoppeltes Modell, bei welchem jedes Neuron einer Schicht mit jedem Neuron der darauffolgenden Schichte verbunden ist. Dies nennt man volle Verbindung. Die Eingangsschicht dient zum Verteilen der Eingangswerte $z_m$ mit $m=1,...,M$. Die Ausgabe eines jeden Neurons in der versteckten Schicht, dargestellt durch $x_n$, lässt sich durch Formel \ref{eq:AusgabeVerdeckteSchicht} berechnen. Hierbei steht $v_{nm}$ für die jeweilige Gewichtung der Verbindungen zwischen den Neuronen der Eingabe- und der versteckten Schicht und $f$ für die Aktivierungfunktion~\cite{NNStanley}\cite{NNHaykin} des jeweiligen Neurons. 
-
+Am häufigsten kommen sogenannte \textit{Multilayer Perceptrons}~(MLP)~\cite{NNBraun}\cite{NNNauck}\cite{NNStanley} zum Einsatz. Ein generalisierter Aufbau ist beispielhaft in Abbildung~\ref{fig:MLP} zu sehen. Dieses MLP besteht aus einer Eingabe- und Ausgabeschicht mit $M$ bzw. $K$ Neuronen und einer versteckten Schicht mit $N$ Neuronen. Es handelt sich um ein vorwärtsgekoppeltes Modell, bei welchem jedes Neuron einer Schicht mit jedem Neuron der darauffolgenden Schicht verbunden ist. Dies nennt man volle Verbindung. \\
+Die Eingangsschicht dient zum Verteilen der Daten $z_m$ mit $m=1,...,M$. Die Ausgabe eines jeden Neurons in der versteckten Schicht, dargestellt durch $x_n$ mit $n=1,...,N$, lässt sich durch Formel~\ref{eq:AusgabeVerdeckteSchicht} berechnen. Hierbei steht $v_{nm}$ für die jeweilige Gewichtung der Verbindungen zwischen den Neuronen der Eingabe- und der versteckten Schicht und $f$ für die Aktivierungfunktion~\cite{NNStanley}\cite{NNHaykin} des jeweiligen Neurons. 
 \footnotesize
 \begin{equation} 
 x_n = f~(\sum_{m=1}^M v_{nm}z_m)
 	\label{eq:AusgabeVerdeckteSchicht}
 \end{equation}
 \small
-
 Die Ausgangswerte $y_k$, mit $k=1,...,K$, lassen sich äquivalent unter Hereinnahme der Werte $x_n$ und der Gewichte $w_{kn}$, sowie einer Aktivierungsfunktion $g$ berechnen, und gelten als Vertrauenswerte. Sie müssen gemäß der Aufgabenstellung interpretiert werden. 
 
 
 \SubSection{Faltungsnetze} \label{sec:Faltungsnetze}
 \todo[inline, color=yellow]{Laura} 
-Im Folgenden wird genauer auf Faltungsnetze eingegangen, da diese die Grundlage, für die meisten der in den folgenden Kapiteln vorgestellten Ansätze, bilden. Vereinfacht ausgedrückt besteht ein Faltungsnetz aus einer Vernetzung von Faltungsoperationen mit unterschiedliche Filtermasken. Faltungsnetze kommen, bedingt durch ihre Architektur, oft zum Einsatz, wenn große Datenmengen von einem NN verarbeitet werden sollen. Ein schematischer Aufbau ist in Abbildung~\ref{fig:CNN} zu sehen. 
-
+Im Folgenden wird genauer auf CNNs eingegangen, da diese die Grundlage, für die meisten der in den folgenden Kapitel vorgestellten Ansätze, bilden. Vereinfacht ausgedrückt besteht ein CNN aus einer Vernetzung von Faltungsoperationen mit unterschiedlichen Filtermasken. CNNs kommen, bedingt durch ihre Architektur, oft zum Einsatz, wenn große Datenmengen von einem NN verarbeitet werden sollen. Ein schematischer Aufbau ist in Abbildung~\ref{fig:CNN} zu sehen. \\
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth]{Bilder/structure-cnn.jpg}
 	\caption{Prinzipieller Aufbau Faltungsnetz nach~\cite{Osadchy}.}
 	\label{fig:CNN}
 \end{figure}
-
-Jedes Pixel eines Feldes, das auf der Abbildung zu sehen ist, wird durch ein Neuron repräsentiert. Die Felder sind in Schichten organisiert. Die Eingangsschicht fungiert, vergleichbar wie bei den MLPs aus Kapitel~\ref{sec:NeuronaleNetze}, als Verteiler der Information an die Neuronen der nächsten Schicht $S_1$. Die Besonderheit eines Faltungsnetzes sind die sich abwechselnd durchgeführte Faltung und anschließende Unterabtastung. Zwischen den Schichten $S_4$ und $S_6$ ähnelt das Modell einem MLP, da die Neuronen schichtweise voll verbunden sind.\\
-
-Im Allgemeinen wird für eine Faltung eine Filtermaske $h$, also eine endlicher zweidimensionaler Koeffizientensatz, wie in Formel~\ref{eq:Filtermaske} zu sehen, verwendet. Hierbei stehen $x$ und $y$ jeweils für die horizontale bzw. die senkrechte Bildkoordinate. Die Anzahl der Koeffizienten $a_{xy}$, wird in der Horizontalen mit $N_{hx}$ und im Vertikalen mit $N_{hy}$ bezeichnet. 
-
+Jedes Pixel eines Feldes, das auf der Abbildung zu sehen ist, wird durch ein Neuron repräsentiert. Die Felder sind in Schichten organisiert. Die Eingangsschicht fungiert, vergleichbar mit den MLPs aus Kapitel~\ref{sec:NeuronaleNetze}, als Verteiler der Information an die Neuronen der nächsten Schicht $S_1$. Die Besonderheit eines CNNs sind die sich abwechselnd durchgeführte Faltung und anschließende Unterabtastung. Zwischen den Schichten $S_4$ und $S_6$ ähnelt das Modell einem MLP, da die Neuronen schichtweise voll verbunden sind.\\
+Im Allgemeinen wird für eine Faltung eine Filtermaske $h$, also ein endlicher, zweidimensionaler Koeffizientensatz, wie in Formel~\ref{eq:Filtermaske} zu sehen, verwendet. Hierbei stehen $x$ und $y$ jeweils für die horizontale bzw. die senkrechte Bildkoordinate. Die Anzahl der Koeffizienten $a_{xy}$, wird in der Horizontalen mit $N_{hx}$ und im Vertikalen mit $N_{hy}$ bezeichnet. 
 \footnotesize
 \begin{equation} 
 	h(x,y) = \left\lbrace
@@ -123,9 +116,7 @@ Im Allgemeinen wird für eine Faltung eine Filtermaske $h$, also eine endlicher 
 	\label{eq:Filtermaske}
 \end{equation}
 \small  
-
 Formel~\ref{eq:Faltung} beschreibt die Faltung eines Eingangssignals $s$ mit einer Filtermaske $h$, wobei I das Ausgangssignal in Abhängigkeit von $x$ und $y$ beschreibt.
-
 \footnotesize
 \begin{equation}
 \begin{aligned}
@@ -135,18 +126,14 @@ I(x,y) = (s*h)(x,y) = \\
 	\label{eq:Faltung}
 \end{equation}
 \small
-
-Im Fall eines Faltungsnetzes wird die Faltung, die wie in Abbildung~\ref{fig:CNN} zu sehen, beispielsweise zwischen der Eingangsschicht und $S_1$ vollzogen wird, wird durch die Verbindung zwischen den Neuronen zweier Felder modelliert. Dabei entsprechen die Gewichte der Neuronen genau den Filterkoeffizienten $a_{xy}$. Für ein jedes Feld sind diese Koeffizienten konstant, was bedeutet, dass alle Neuronen eines Feldes mit nur einem Gewicht auskommen. Dieses Prinzip nennt man geteilte Gewichte. \\
-
-Im Faltungsnetz wird nach jeder Faltung eine Unterabtastung durchgeführt um zu gewährleisten, dass die Dimension der Eingangsdaten schrittweise an die Dimension des Ausgangsvektors angepasst wird. Hierzu wird meist eine bilineare Unterabtastung um den Faktor 2 vorgenommen. Allgemeiner betrachtet werden $n$x$n$ Werte zu einem Wert zusammengefasst.\\
-
-Wie zu Beginn des Kapitels erwähnt, haben Faltungsnetze gegenüber den MLPs den Vorteil, dass sie nahezu beliebig hochskaliert werden können und somit gut geeignet für große Datenmengen sind. Dies liegt vor allem daran, dass die Neuronen nur lokal verbunden sind und sich somit das Prinzip der geteilten Gewichte zu Nutze gemacht werden kann. Ein weiterer Vorteil von Faltungsnetzen, der vor allem in der Bildverarbeitung genutzt wird, ist das sie translationsinvariant sind.
+Im Fall eines CNNs wird die Faltung, die wie in Abbildung~\ref{fig:CNN} zu sehen, beispielsweise zwischen der Eingangsschicht und $S_1$ vollzogen wird, durch die Verbindung zwischen den Neuronen zweier Felder modelliert. Dabei entsprechen die Gewichte der Neuronen genau den Filterkoeffizienten $a_{xy}$. Für ein jedes Feld sind diese Koeffizienten konstant, was bedeutet, dass alle Neuronen eines Feldes mit nur einem Gewicht auskommen. Dieses Prinzip nennt man geteilte Gewichte. \\
+Im CNN wird nach jeder Faltung eine Unterabtastung durchgeführt um zu gewährleisten, dass die Dimension der Eingangsdaten schrittweise an die Dimension des Ausgangsvektors angepasst wird. Hierzu wird meist eine bilineare Unterabtastung um den Faktor 2 vorgenommen. Allgemeiner betrachtet werden $n$x$n$ Werte zu einem Wert zusammengefasst.\\
+Wie zu Beginn des Kapitels erwähnt, haben CNNs gegenüber den MLPs den Vorteil, dass sie nahezu beliebig hochskaliert werden können und somit gut geeignet für große Datenmengen sind. Dies liegt vor allem daran, dass die Neuronen nur lokal verbunden sind und sich somit das Prinzip der geteilten Gewichte zu Nutze gemacht werden kann. Ein weiterer Vorteil von CNNs, der vor allem in der Bildverarbeitung genutzt wird, ist das sie translationsinvariant sind.
 
 \SubSection{Training Faltungsnetze} \label{sec:Training}
 \todo[inline, color=yellow]{Laura} 
-Meistens werden Faltungsnetze mittels der \textit{back-propagation} Methode trainiert. Bei dieser überwachten Lernmethode bedarf es einer großen Menge an vorher klassifizierten Eingabematerialien~\cite{5537907}. \\
-In den Faltungsschichten kann der Fehler der vorangegangen Schicht nach Formel \ref{eq:Training} berechnet werden. Dabei steht $E$ für den Fehler in der jeweiligen Schicht $l$. Während $x^l$ für die Eingabe in die Schicht steht, bezeichnet $y^l$ die Ausgabe der entsprechenden Schicht. Die Größe der Eingabe wird der Einfachheit halber als quadratisch, also $mxm$-groß angenommen. Eine Gewichtung wird mit $w$ bezeichnet. für Um die Formel in der Realität anzuwenden, muss die linke und obere Grenze des Eingabeinhaltes, z.B. eines Bildes, mit Nullen ergänzt werden. Ansonsten wäre es nicht möglich den Fehler für Pixel zu berechnen, welche näher als $m$ an den entsprechenden Rändern liegen. 
-
+Meistens werden CNNs mittels der \textit{back-propagation} Methode trainiert. Bei dieser überwachten Lernmethode bedarf es einer großen Menge an vorher klassifizierten Eingabematerialien~\cite{5537907}. \\
+In den Faltungsschichten kann der Fehler der vorangegangen Schicht nach Formel \ref{eq:Training} berechnet werden. Dabei steht $E$ für den Fehler in der jeweiligen Schicht $l$ gemacht wird. Während $x^l$ für die Eingabe in die Schicht steht, bezeichnet $y^l$ die Ausgabe der entsprechenden Schicht. Die Größe der Eingabe wird der Einfachheit halber als quadratisch, also $mxm$-groß angenommen. Die Gewichtung wird mit $w$ bezeichnet. Um die Formel in der Realität anzuwenden, muss die linke und obere Grenze de Eingabeinhaltes, z.B. eines Bildes, mit Nullen ergänzt werden. Ansonsten wäre es nicht möglich den Fehler für Pixel zu berechnen, welche näher als $m$ an den entsprechenden Rändern liegen. \\
 \footnotesize
 \begin{equation}
 \begin{aligned}
@@ -156,51 +143,36 @@ In den Faltungsschichten kann der Fehler der vorangegangen Schicht nach Formel \
 	\label{eq:Training}
 \end{equation}
 \small
-
-Die Schichten, in denen die Unterabtastung stattfindet, leisten kaum Beitrag zum eigentlichen Lernprozess des Faltungsnetzes. Hier wird das Problem allerdings reduziert, da $n$x$n$ Werte in einem einzigen resultieren. \\
-Weil alle Gewichtungen mittels des \textit{back-propagation} Algorithmus während des Trainings angepasst werden, können Faltungsnetze laut LeCun als Erzeuger ihrer eigenen Merkmalextraktion gesehen werden \cite{LeCun:1998:CNI:303568.303704}.
-
-
-
-
-
-
+Die Schichten, in denen die Unterabtastung stattfindet, leisten kaum Beitrag zum eigentlichen Lernprozess des CNNs. Hier wird das Problem allerdings reduziert, da $n$x$n$ Werte in einem einzigen resultieren. \\
+Weil alle Gewichtungen $w$ mittels des \textit{back-propagation} Algorithmus während des Trainings angepasst werden, können CNNs laut LeCun als Erzeuger ihrer eigenen Merkmalextraktion gesehen werden \cite{LeCun:1998:CNI:303568.303704}.
 
 
 \Section{Konzeption} \label{sec:Konzeption}
 \todo[inline, color=yellow]{Vera} 
-Vor der eigentlichen Produktion von Videomaterial muss das Projekt zunächst konzipiert und detailliert geplant werden. Dies bezieht sich vor allem auf die kreativen Prozesse des Drehbuchschreibens und die darauffolgende gesamte Projektplanung und -vorbereitung. Naturgemäß sind NN weniger sinnvoll für die Planung und das Management von Projekten. Doch in den letzten Jahren wurde damit begonnen mit Hilfe von NN kreative Prozesse umzusetzen und zu erforschen ob sie Kreativität entwickeln können. In diesem Sinne ist Kreativität auch mit sinnvollen und selbstständigem Denken sowie Entscheiden gleichzusetzen. Beides ist im Entstehungsprozess von Drehbüchern unumgänglich.
-
-Es gibt bereits erste Versuche mit Hilfe von NN automatisch sinnvolle Texte und Dialoge zu erstellen, die auf bekannten Texten und Storylines basieren \cite{Thoma16}. Dieses Verfahren wird in der Literatur auch \textit{Deep Writing} genannt.Es können auch Romane, Dialoge oder Songtexte automatisch mit einem LSTM Recurrent NN erstellt werden~\cite{DrehbuchWrite}.
+Vor der eigentlichen Produktion von Videomaterial muss das Projekt zunächst konzipiert und detailliert geplant werden. Dies bezieht sich vor allem auf die kreativen Prozesse des Drehbuchschreibens und die darauffolgende gesamte Projektplanung und -vorbereitung. Naturgemäß sind NN weniger sinnvoll für die Planung und das Management von Projekten. Doch in den letzten Jahren wurde versucht mit Hilfe von NN kreative Prozesse umzusetzen, wie sie für das Schreiben von Drehbüchern benötigt werden. Es gibt bereits erste Versuche mit Hilfe von NN automatisch sinnvolle Texte und Dialoge zu erstellen, die auf bekannten Texten und Storylines basieren \cite{Thoma16}. Dieses Verfahren wird in der Literatur auch \textit{Deep Writing} genannt. Es können auch Romane, Dialoge oder Songtexte automatisch mit einem LSTM Recurrent NN erstellt werden~\cite{DrehbuchWrite}.
 
 \SubSection{Aktueller Stand} \label{sec:SOTAVorverarbeitung}
 \todo[inline, color=yellow]{Vera} 
-Ein solches LSTM Recurrent NN wurde mit allen bekannten Episoden der Serie \textit{Silicon Valley} trainiert \cite{DrehbuchSV}. Nach dem erfolgreichen Training sind Wörter die häufig zusammenhängen in einem mathematischem Model gruppiert~\cite{DrehbuchWrite}. Zu Beginn des Schreibprozesses wird ein beliebiges Wort genutzt um den ersten Satz zu initialisieren. Das NN sucht im Anschluss das Wort, welches am häufigsten nach dem Startwort in den Trainingsdaten genannt wurde. Mit diesem Wortpaar wird nach dem selben Prinzip das dritte Wort des Textes ermittelt. Dieser Prozess wird solange wiederholt bis der generierte Text die gewünschte Länge erreicht hat.
+Ein solches LSTM Recurrent NN wurde mit allen bekannten Episoden der Serie \textit{Silicon Valley} trainiert \cite{DrehbuchSV}. Zu Beginn des Schreibprozesses wird ein beliebiges Wort genutzt um den ersten Satz zu initialisieren. Das NN sucht im Anschluss das Wort, welches am häufigsten nach dem Startwort in den Trainingsdaten genannt wurde. Mit diesem Wortpaar wird nach dem selben Prinzip das dritte Wort des Textes ermittelt. Dieser Prozess wird solange wiederholt bis der generierte Text die gewünschte Länge erreicht hat \cite{DrehbuchWrite}. Die generierten  grammatikalisch korrekten Sätze beziehungsweise Dialoge ergeben keine sinnvollen Zusammenhänge und folgen keiner ersichtlichen Storyline. \\
 
-Das Ergebnis sind Sätze, welche eine korrekte Grammatik aufweisen und häufig inhaltlich einen Sinn ergeben~\cite{DrehbuchSV}. Trotzdem ergeben die generierten Sätze beziehungsweise Dialoge sind nicht kohärent und folgen keiner ersichtlichen Storyline. \\
-
-Der Film \textit{Sunspring}~\cite{DrehbuchMovie} wurde nach einem ähnlichen Prinzip erstellt und im Anschluss von einem professionellen Filmteam realisiert. Der größte Unterschied zu \cite{DrehbuchSV} ist, dass das NN nicht nur Wörter unterscheidet. Stattdessen wird zunächst alles in Buchstaben zerlegt und dann in neue Wörter und Sätze zusammengesetzt. Das verwendete NN nannte sich selber \textit{Benjamin} und wurde mit einer großen Anzahl an Drehbüchern von Science Fiction Filmen aus den 80er und 90er Jahren trainiert. 
-
-Heraus kam ein Drehbuch, dass ähnlich wie \cite{DrehbuchSV} zwar grammatikalisch korrekte Sätze erschuf, die aber häufig inhaltlich keinen Sinn ergaben. Ein anderes Problem war der Umgang mit Namen, da diese sprachlich anders behandelt werden. Aus diesem Grund mussten alle Charaktere nur mit einzelnen Buchstaben benannt werden. Dies hatte zur Folge, dass das NN zwei Charaktere mit der selben Bezeichnung betitelt wurden und nachträglich umbenannt wurden.\\
+Der Film \textit{Sunspring}~\cite{DrehbuchMovie} wurde nach einem ähnlichen Prinzip erstellt und im Anschluss von einem professionellen Filmteam realisiert. Der größte Unterschied zu \cite{DrehbuchSV} ist, dass das NN nicht nur Wörter unterscheidet. Stattdessen wird zunächst alles in Buchstaben zerlegt und dann in neue Wörter und Sätze zusammengesetzt. Das verwendete NN nannte sich selber \textit{Benjamin} und wurde mit einer großen Anzahl an Drehbüchern von Science Fiction Filmen aus den 80er und 90er Jahren trainiert. Heraus kam ein Drehbuch mit ähnlich  grammatikalisch korrekten Sätzen, die aber häufig inhaltlich keinen Sinn ergaben. Ein anderes Problem war der Umgang mit Namen, da diese sprachlich anders behandelt werden. Aus diesem Grund mussten alle Charaktere nur mit einzelnen Buchstaben benannt werden. Dies hatte zur Folge, dass das NN zwei Charaktere mit der selben Bezeichnung betitelt wurden und nachträglich umbenannt wurden.\\
 
 Aus den mangelnden Zusammenhängen lässt sich ableiten, dass derzeit NN keine kreativen Prozesse simulieren können. Selbst mit einer sehr großen Anzahl von Trainingsdaten konnten keine kohärenten Dialoge generiert werden und keine konstante Storyline verfolgt werden. Weiterführend, sind die NN nicht in der Lage neue Charaktere oder Geschichten zu erfinden, sonder kombiniert lediglich bekannte wörtliche Zusammenhänge neu. Somit gibt es zur Zeit keinen brauchbaren Ansatz, welcher den Aufwand des Drehbuchschreibens minimieren könnte. 
 
 \Section{Produktion} \label{sec:Produktion}
-\todo[inline, color=red]{Laura} 
-\textcolor{red}{muss angepasst werden} \\
-In diesem Kapitel werden zunächst Ansätze vorgestellt, die auf Grundlage von NNs Arbeitsschritte bei der Produktion von Videos übernehmen bzw. vereinfachen könnten (vgl. Kapitel~\ref{sec:SOTAProduktion}). Dazu ist an zu merken, dass diese Ansätze meist in einem anderen Kontext entwickelt wurden und ggf. eine Anpassung an die Standards einer Produktion stattfinden müsste. \\
-
-In Kapitel~\ref{sec:Vondrick} wird ein Ansatz zur automatisierten Generierung von Szenendynamiken in Hinsicht auf Funktionsweise und Arbeitserleichterung für die Videoproduktion analysiert. 
+\todo[inline, color=yellow]{Laura} 
+Die Produktion ist von allen drei besprochenen Kategorien diejenige, die bisher am wenigsten automatisiert durchgeführt werden kann. Moderne Kameras- und Tonaufnahmesysteme bieten zwar eine einfachere Handhabung und Fehlerkontrolle, als es noch bei der analogen Aufzeichnung der Fall war, dennoch braucht eine Filmproduktion viele menschliche Arbeitsstunden. \\
+Im Folgenden soll geprüft werden, ob es heutzutage realisierbare Austomatiersungsansätze gibt. Dabei wird oberflächlich auf die Generierung von Musik eingegangen, die später in der Postproduktion unter die einzelnen Szenen gelegt werden kann. Daran schließt sich eine ausführlichere Betrachtung eines Ansatzes zur automatisierten Generierung von Szenen Dynamiken an. 
 
 
 \SubSection{Aktueller Stand Musikgenerierung} \label{sec:SOTAProduktion}
 \todo[inline, color=yellow]{Laura} 
 Es gibt verschiedene Ansätze NNs zu nutzen, um Musik automatisiert generieren zu lassen. Im Folgenden werden drei Ansätze kurz vorgestellt, welche alle rückgekoppelte Neuronale Netze (RNN) benutzen. \\
-An der \textit{University of Washington} ist im Rahmen einer Projektarbeit ein Musik Generator namens \textit{Algo Rythm} entstanden~\cite{Algorithm}. Für die Umsetzung habend die Studierenden um Timmerman RNNs geeignet trainiert. Der Quellcode kann auf Github \cite{AlgorithmGit} eingesehen werden.\\
-Ein weiterer Ansatz, der in \cite{eck+lapalme:2008} beschrieben wird, arbeitet ebenfalls mit einem RNN, welches mit einem Autokorrelation-basierte Prädiktor kombiniert wird. Dabei soll die Struktur von Musikstücken erlernt werden, indem zunächst die folgende Note einer Tonreihenfolge vorausgesagt werden soll. \\
-Der letzte Ansatz benutzt ebenfalls RNNs um auf Grundlage einer Notensequenz eine Musikstück zu komponieren \cite{browne2001system}. Dabei wird die Eingabesequenz zunächst interpretiert. Anschließend sorgen zwei RNN basierte Algorithmen für die Produktion von sowohl Rhythmus, als auch die Vorhersage der nächsten Note. \\
+An der \textit{University of Washington} ist im Rahmen einer Projektarbeit ein Musik Generator namens \textit{Algo Rythm} entstanden~\cite{Algorithm}. Für die Umsetzung haben die Studierenden um Timmerman RNNs geeignet trainiert. Der Quellcode kann auf Github \cite{AlgorithmGit} eingesehen werden.\\
+Ein weiterer Ansatz, der in~\cite{eck+lapalme:2008} beschrieben wird, arbeitet ebenfalls mit einem RNN, welches mit einem Autokorrelation-basierte Prädiktor kombiniert wird. Dabei soll die Struktur von Musikstücken erlernt werden, indem zunächst die folgende Note einer Tonreihenfolge vorausgesagt werden soll. \\
+Der letzte Ansatz benutzt ebenfalls RNNs um auf Grundlage einer Notensequenz eine Musikstück zu komponieren~\cite{browne2001system}. Dabei wird die Eingabesequenz zunächst interpretiert. Anschließend sorgen zwei RNN basierte Algorithmen für die Produktion von sowohl Rhythmus, als auch die Vorhersage der nächsten Note. \\
 
-Alle drei Ansätze weisen hohes Potential auf, wenn es darum geht Musikstücke automatisiert zu generieren. Über das Genre des zugeführten Musikmaterials lässt sich die gewünschte Ausgabe begrenzt steuern. Es wäre durchaus vorstellbar, so Musik für eine Filmproduktion zu generieren.
+Alle drei Ansätze weisen hohes Potential auf, wenn es darum geht Musikstücke automatisiert zu generieren. Über das Genre des zugeführten Musikmaterials lässt sich die gewünschte Ausgabe begrenzt steuern. Es wäre durchaus vorstellbar, so generierte Musik für eine Filmproduktion zu benutzen.
 
 
 
@@ -208,62 +180,45 @@ Alle drei Ansätze weisen hohes Potential auf, wenn es darum geht Musikstücke a
 
 
 \SubSection{Szenendynamik nach Vondrick et al.} \label{sec:Vondrick}
-\todo[inline, color=red]{Laura} 
-Mit dem Ansatz von Vondrick et al.~\cite{Vondrick} können aus Einzelbildern ganze Szenen Dynamiken erstellt werden, welche zum einen für die Klassifizierung und zum anderen für die Vorhersage von Bewegung genutzt werden kann. Das Resultat sind kleine Videos mit einer Auflösung von 65x64 Pixeln und 32 Einzelbildern. \\
-
-Die Grundlage für dieses Verfahren bilden zwei Faltungsnetze, welche als Gegenspieler trainiert werden. \textit{Generative Adversarial Networks} (GAN) \cite{NIPS2014_5423} Dieses Konzept basiert auf einem Generator und Diskriminator und w
-gegeneinander Trainieren siehe Formel (1)
-
-unsupervised learning. 
-Trainiert nach Kategorien
-
-
-
+\todo[inline, color=yellow]{Laura} 
+Mit dem Ansatz von Vondrick et al.~\cite{VondrickPT16} können aus Einzelbildern ganze Szenen Dynamiken erstellt werden, welche zum einen für die Klassifizierung und zum anderen für die Vorhersage von Bewegung genutzt werden kann. Das Resultat sind kleine Videos mit einer Auflösung von 64x64 Pixeln und 32 Einzelbildern. \\
+Die Grundlage für dieses Verfahren bilden zwei CNNs, die als \textit{Generative Adversarial Networks} (GAN) \cite{NIPS2014_5423} fungieren. Die beiden Netze können als Gegenspieler angesehen werden. Während der Generator $G$ für die Generierung von einer Videosequenz auf Grundlage eines Standbildes zuständig ist, soll der Diskriminator $D$ zwischen den so erzeugten und realen Videosequenzen differenzieren können. Um dies zu erreichen werden beide GANs, wie in Formel 1 des Papers~\cite{VondrickPT16} zu sehen gegeneinander trainiert. Das Minimierungs- bzw. Maximierungsproblem wird hierzu mittels Gradientenverfahren gelöst. \\
+Das Training der beiden Netze erfolgt unüberwacht. Da ähnliche Objekte in der Regel auch ähnliche Bewegungsmuster aufweisen, lassen die Autoren das zur Verfügung stehende Videomaterial in Kategorien (Strand, Babys, Golf und Züge) einteilen. Zudem sorgt ein Stabilisierungsalgorithmus dafür, dass bei dem gesamten Testmaterial von einer statischen Kamera ausgegangen werden kann und die zu erlernende Szenen Dynamik nicht durch eine Bewegung der Kamera verfälscht wird. Für jede dieser Kategorien wird dann ein eigenes Pärchen bestehend aus Generator und Diskriminator trainiert. \\
+Bevor die beiden CNNs $G$ und $D$ auf die beschriebene Art trainiert werden können, müssen sie erst einmal ihren Aufgaben entsprechend aufgebaut werden. \\
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth]{Bilder/generator2.jpg}
-	\caption{Aufbau Generator nach~\cite{Vondrick}.}
+	\caption{Aufbau Generator nach~\cite{VondrickPT16}.}
 	\label{fig:generator}
 \end{figure}
-
-
+Den Aufbau des Generators, welchen Vondrick et al. genutzt haben, ist in Abbildung~\ref{fig:generator} zu sehen. Im Gegensatz zu dem in Kapitel~\ref{sec:Faltungsnetze} beschriebenen, gewöhnlichen CNN, wird hierbei keine Unterabtastung vorgenommen, sondern die Menge der Daten von Schicht zu Schicht erweitert. Zudem werden die Eingabedaten für die Verarbeitung in zwei Datenströme aufgeteilt. Während in dem einen Strom der statische Hintergrund entsprechend vergrößert wird, wird in dem anderen die Bewegung des sich im Vordergrund befindlichen Objektes vorhergesagt. Beide Teile werden dann am Ausgang nach Formel~\ref{eq:Generator} zusammengefasst.
+\footnotesize
+\begin{equation}
+\begin{aligned}
+G(z) = m(z) \odot f(z) + (1-m(z))\odot b(z)
+\end{aligned}
+	\label{eq:Generator}
+\end{equation}
+\small
+Dafür ist die binäre Maske $m$ so gewählt, dass sie überall den Wert eins hat, wo der Vordergrund übernommen werden soll und ansonsten nur Nullen enthält. \\
+Der Diskriminator hat einen wesentlich simpleren Aufbau, der in Abbildung~\ref{fig:discriminator} zu sehen ist. Dabei muss seine Eingabeschicht eben so groß sein, wie die Ausgabeschicht des Generators.\\
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth]{Bilder/discriminator.jpg}
-	\caption{Aufbau Diskriminator nach~\cite{Vondrick}.}
+	\caption{Aufbau Diskriminator nach~\cite{VondrickPT16}.}
 	\label{fig:discriminator}
 \end{figure}
+Die Bedeutung für so erzeugte Bewegtbildsequenzen für die Automatisierung der Produktion von Filmen, wird im nächsten Kapitel diskutiert. Die Resultate können sich auf der Internetseite der Autoren eingesehen werden~\cite{VondrickInternet}.
 
-\begin{figure}
-	\flushleft
-	\includegraphics[width=\columnwidth]{Bilder/disAndGen.jpg}
-	\caption{Zusammenspiel Diskriminator und Generator.}
-	\label{fig:disAndGen}
-\end{figure}
+
 
 
 
 
 \SubSection{Bewertung des Ansatzes von Vondrick} \label{sec:VondrickConclusion}
-\todo[inline, color=red]{Laura} 
-
-Vorteile Verfahren:
-- automatisierte Vorverarbeitung des Lernmaterials möglich
-- Vorverarbeitung muss nur einmal gemacht werden
-- Trainingsmaterial für G kann auch für D genutzt werden
-- Bewegungen werden nach Kategorien gelernt
-
-Vorteile in Bezug auf Videoproduktion:
-- Verständnis der Szenen Dynamik wird wichtiger
-- planen höhere Auflösung
-- Denkbar für Realisierung von bspw. GIFs
-- Simulationen oder Vorhersagen 
-
-Nachteile:
-- bedarf viel Trainingsmaterial
-- Kategorien ohne Vernunft ausgewählt
-- Realismusgrad nicht ausreichend
-- Es gibt noch keine höhere Auflösung
+\todo[inline, color=yellow]{Laura} 
+Das in Kapitel~\ref{sec:Vondrick} beschriebene Verfahren schafft es automatisiert aus einem Einzelbild eine kurze und niedrig aufgelöste Bewegtbildsequenz zu erstellen. Hierbei wir vor allem die Szenen Dynamik in den meisten Fällen annähernd realistisch vorhergesagt, wobei die Modellierung des sich bewegenden Bildinhaltes eher mangelhaft ist. Trotz des hohen Bedarfs an Trainingsmaterial und den damit verbundenen Zeitaufwand, kann das System ohne menschliche Hilfe eigenständig Kategorisieren, Trainieren und letztendlich Szenen Dynamiken generieren. Gegen einen Einsatz in der Videoproduktion sprechen die geringe Auflösung und Zeitspanne die bisher generiert werden kann. Zudem kann in einer Szene nicht immer nur von einem sich bewegenden Objekt ausgegangen werden. Und ein trainieren von Netzen für alle denkbaren Kategorien ist sehr aufwendig. Dennoch könnte der Ansatz als Grundlage für einen ausgereifteren Algorithmus dienen, der beispielsweise die Anweisungen des Drehbuchs mit einbezieht und somit eine Generierung von planbareren Szenen ermöglicht. \\
+Der jetzige Stand des Algorithmus könnte beispielsweise für die Generierung von GIFs oder Simulationen genutzt werden. Zudem könnte der Ansatz, mit etwas Anpassung, anstatt Szenen Dynamiken in Form von Videos darzustellen, Bewegungsvektoren aus einem Standbild vorhersagen und somit in der Videocodierung Einsatz finden. 
 
 
 
@@ -327,7 +282,7 @@ Dieser Ablauf wird solange wiederholt bis sich $\vec{f_{CS}}$  möglichst dem Au
 	\label{fig:DeepDreamResults}
 \end{figure}
 
-Einige Ergebnisse des \textit{Deep Dream} Verfahrens sind in Abbildung~\ref{fig:DeepDreamResults} dargestellt. Die kleinen Bilder in der oberen Ecke sind die verwendeten SS. Auf der linken Seite sind jeweils die Ergebnisse mit einer niedrigen Schicht und rechts solche einer höheren Schicht dargestellt. Auf den ersten Blick fällt direkt auf das die linken Bilder stärker die kleinen Merkmales übernommen haben während rechts eindeutig größere Texturen übernommen wurde, wie zum Beispiel die Form des Schmetterlings oder Vulkans am Hals. Gleichzeitig fällt rechts auf, dass markante Bildpunkte, wie die Augen oder die Nase, stark modifiziert wurden und teilweise sogar deren Form verändert wurde. Somit können teilweise Inhalte des ursprünglichen Bildes verloren gehen. Die Nase wurde in c einer Hundeschnauze angenähert, da die Trainingsdaten von \textit{ImageNet} einen Überschuss an Hundemotiven enthält. Besonders deutlich wird dies, wenn dein SS verwendet wird\cite{McCaigDG16}. Andere Ergebnisse zeigten auch deutlich, dass durchaus auch die Merkmale der Trainingsdaten gegenüber denen des SS überwiegen können.
+Einige Ergebnisse des \textit{Deep Dream} Verfahrens sind in Abbildung~\ref{fig:DeepDreamResults} dargestellt. Die kleinen Bilder in der oberen Ecke sind die verwendeten SS. Auf der linken Seite eines Blockes sind jeweils die Ergebnisse mit einer niedrigen Schicht und rechts solche einer höheren Schicht dargestellt. Auf den ersten Blick fällt direkt auf das die linken Bilder stärker die kleinen Merkmales übernommen haben während rechts eindeutig größere Texturen übernommen wurde, wie zum Beispiel die Form des Schmetterlings oder Vulkans am Hals. Gleichzeitig fällt rechts auf, dass markante Bildpunkte, wie die Augen oder die Nase, stark modifiziert wurden und teilweise sogar deren Form verändert wurde. Somit können teilweise Inhalte des ursprünglichen Bildes verloren gehen. Die Nase wurde in c einer Hundeschnauze angenähert, da die Trainingsdaten von \textit{ImageNet} einen Überschuss an Hundemotiven enthält. Besonders deutlich wird dies, wenn dein SS verwendet wird\cite{McCaigDG16}. Andere Ergebnisse zeigten auch deutlich, dass durchaus auch die Merkmale der Trainingsdaten gegenüber denen des SS überwiegen können.
 \\
 Es ist demzufolge für den Nutzer nicht möglich die Endergebnisse zu kontrollieren oder in den Prozess einzugreifen. Die einzige Möglichkeit der Kontrolle bietet die Wahl des SS und der Trainingsdaten, welche einen nicht vorhersehbaren Einfluss auf das Endergebnis haben. Daher kann von keiner strikten Trennung von Semantik und Inhalt ausgegangen werden. \\
 Weiter kann nicht gewährleistet werden die Ergebnisse zu reproduzieren und ähnliche Bilder auf kohärente  Weise zu transformierten, da die Gewichte des CNN stetig während einer Iteration modifiziert werden. Diese Reproduzierbarkeit und Kohärenz ist ein wichtiges Kriterium für die Videoproduktion, da eine Sequenz von ähnlichen Bilder entsprechen gleichförmig transformiert werden muss. Aus diesem Grund ist dieses Verfahren mehr als neue Kunstform und interessante Spielwiese um die Funktionalität von CNN besser zu verstehen. Für die Videoproduktion ist sie gänzlich ungeeignet.
@@ -335,53 +290,59 @@ Weiter kann nicht gewährleistet werden die Ergebnisse zu reproduzieren und ähn
 
 
 \SubSection{Deep Style}\label{sec:DeepStyle}
+Gerade die mangelnde Einflussnahme und die fehlende Reproduzierbarkeit des Nutzers beim \textit{Deep Dream} Verfahren \cite{DeepDream} verlangt nach einer Weiterentwicklung. Diese ist durch das \textit{Deep Style} Verfahren \cite{GatysEB15a} gegeben, welche ein ähnliches Schema verfolgt. Der große Unterschied ist die strikte Trennung und Berücksichtigung von stilgebenden und inhaltsbezogen Informationen, einer erweiterten Fehlerfunktion und der Initialisierung durch ein Bild mit zufälligem Rauschen.\\
+Zusätzlich wird eine andere CNN-Architektur verwendet. Es wird ein trainiertes VGG Faltungsnetz \cite{SimonyanZ14a} mit 16-19 Schichten benutzt und dessen Schichten in erster Linie aus $3\times3$ Faltungskernen besteht. Dieses VGG wurde ebenfalls mit den \textit{ImageNet} Trainingsdatenset trainiert.\\
+
+Nach dem Training wird zunächst ein SS vorwärtspropagiert bis zur höchsten Schicht. Für jede Schicht wird im Gegensatz zu \textit{Deep Dream} der entsprechende Merkmalsvektor $\vec{GS}$ abgespeichert. Diese Vektoren beinhalten alle Stilmerkmale auf allen Ebenen, welche für die spätere Berechnung des Fehlergradienten benötigt werden. Im Anschluss wird das Zielbild bis zur letzten Schicht propagiert, welches im Folgenden Content Source Image (CS) genannt wird. An dieser Stelle wird nur der Merkmalsvektor $\vec{GC}$ der letzten Schicht verwendet.\\
+
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth]{Bilder/DeepStyle.jpg}
 	\caption{Ablaufdiagramm des Deep Style Verfahrens.}
 	\label{fig:DeepStyle}
 \end{figure}
+Abbildung~\ref{fig:DeepStyle} zeigt den schematischen Ablauf nach der erfolgreichen Initialisierung. Wie bereits erwähnt, beinhaltet das Canvas Image (CI) zufälliges Rauschen, welches während jeder Iteration in die Richtung von $\vec{GC}$ und $\vec{GS}$ transformiert wird. Das CI wird ebenfalls vorwärtspropagiert und mit den resultierenden Merkmalsvektoren $f$ aus jeder Schicht die Korrelation $G$ zwischen den Merkmalsvektoren innerhalb einer Schicht ermittelt, wie in Gleichung~\ref{eq:DeepStyleCorr}. In dieser Gleichung ist $l$ die Anzahl Schichten im VGG und sie ist der erste Schritt zur Fehlerberechnung der Stilmerkmale in Gleichung~\ref{eq:DeepStyleErr}.
 \footnotesize
 \begin{equation}
-F_{con}(\vec{f_{GC}}, \vec{f})= \frac{1}{2}\sum_{i,j}\vec{GC_{ij}}- \vec{f_{ij}})^2
-\label{eq:DeepStyleContError}
-\end{equation}
-\small
-
-\footnotesize
-\begin{equation}
-G_{ij}^N= \frac{1}{2}\sum_{k=0}^N (\vec{f_{ik}}- \vec{f_{jk}})^2
+G_{ij}^l= \frac{1}{2}\sum_{k=0} (\vec{f_{ik}}- \vec{f_{jk}})^2
 \label{eq:DeepStyleCorr}
 \end{equation}
 \small
-
+Im Anschluss wird mit diesen Korrelationen $G_{ij}^l$ jeweils  pro Schicht die quadrierte Fehlerfunktion $F_l$ aus Gleichung~\ref{eq:DeepStyleCorrErr} berechnet. In diesem Fall bezeichnet $N$ die Anzahl der Merkmalsvektoren in einer Schicht und $M$ deren Größe. Für den gesamten Fehler der Stil $F_{style}$ werden alle $F_l$ wie in Gleichung~\ref{eq:DeepStyleErr} gewichtet aufsummiert.
 \footnotesize
 \begin{equation}
-F_N= \frac{1}{2N_l^2M_l^2}\sum_{k=0}^N (G_{ij}^N- \vec{GS_{ij}^N})^2
+F_l= \frac{1}{2N_l^2M_l^2}\sum_{k=0}^N (G_{ij}^l- \vec{GS_{ij}^l})^2
 \label{eq:DeepStyleCorrErr}
 \end{equation}
 \small
-
 \footnotesize
 \begin{equation}
-F_{style}(SS,CI)= \sum_{k=0}^N w_l F_k
-\label{eq:DeepStyleCorrErr}
+F_{style}(SS,CI)= \sum_{k=0} w_l F_k
+\label{eq:DeepStyleStyleErr}
 \end{equation}
 \small
-
+Neben $F_{style}$ wird auch $F_{content}$ berechnet, doch dieses ist weniger komplex. $F_{content}$ ist als simple quadrierte Fehlerfunktion aus den Merkmalsvektoren von $GC$ und denen des $f$-Vektors der letzten Schicht definiert. 
 \footnotesize
 \begin{equation}
-F_(SS,CS,CI)= \alpha F_{con}+\beta F_{style}
-\label{eq:DeepStyleCorrErr}
+F_{content}(\vec{f_{GC}}, \vec{f})= \frac{1}{2}\sum_{i,j}(\vec{GC_{ij}}- \vec{f_{ij}})^2
+\label{eq:DeepStyleContError}
+\end{equation}
+\small
+Die gesamte Fehlerfunktion $F(SS,CS,CI)$ ergibt sich aus der gewichteten Summe von $F_{content}$ und $F_{style}$. Die beiden Gewichte $\alpha$ und $\beta$ ermöglichen dem Nutzer das Verhältnis zwischen Stil und Inhalt zu modifizieren und somit das Endergebnis seinen Vorstellungen anzupassen. 
+\footnotesize
+\begin{equation}
+F (SS,CS,CI)= \alpha F_{con}+\beta F_{style}
+\label{eq:DeepStyleErr}
 \end{equation}
 \small
 
 \begin{figure}
 	\flushleft
-	\includegraphics[width=\columnwidth]{Bilder/DeepStyleResults.JPG}
+	\includegraphics[width=6.5cm]{Bilder/DeepStyleResults.JPG}
 	\caption{Resultate des Deep Style Verfahrens~\cite{McCaigDG16}.}
 	\label{fig:DeepStyleResults}
 \end{figure}
+Von $F(SS,CS,CI)$ wird, wie beim \textit{Deep Dream} Verfahren, auch der Gradient bestimmt um eine Rückwärtspropagation durchzuführen. Das weitere Ablaufschema gleicht dem des \textit{Deep Dream} und es wird solange iteriert bis sich die Merkmalsvektoren von CI an die Initalisierungsvektoren von SS und CS nahezu ähneln.
 
 \SubSection{Ausblick}
 

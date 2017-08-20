@@ -9,6 +9,7 @@
 \usepackage[hyphens]{url}
 \usepackage{mathtools}
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage[font=small,labelfont=bf]{caption}
 
 \pagestyle{empty}
@@ -199,44 +200,46 @@ Alle drei Ansätze weisen hohes Potential auf, wenn es darum geht Musikstücke a
 
 \SubSection{Szenendynamik nach Vondrick et al.} \label{sec:Vondrick}
 \todo[inline, color=red]{Laura} 
-Mit dem Ansatz von Vondrick et al.~\cite{Vondrick} können aus Einzelbildern ganze Szenen Dynamiken erstellt werden, welche zum einen für die Klassifizierung und zum anderen für die Vorhersage von Bewegung genutzt werden kann. Das Resultat sind kleine Videos mit einer Auflösung von 65x64 Pixeln und 32 Einzelbildern. \\
-
-Die Grundlage für dieses Verfahren bilden zwei Faltungsnetze, welche als Gegenspieler trainiert werden. \textit{Generative Adversarial Networks} (GAN) \cite{NIPS2014_5423} Dieses Konzept basiert auf einem Generator und Diskriminator und w
-gegeneinander Trainieren siehe Formel (1)
-
-unsupervised learning. 
-Trainiert nach Kategorien
-
-
-
+Mit dem Ansatz von Vondrick et al.~\cite{VondrickPT16} können aus Einzelbildern ganze Szenen Dynamiken erstellt werden, welche zum einen für die Klassifizierung und zum anderen für die Vorhersage von Bewegung genutzt werden kann. Das Resultat sind kleine Videos mit einer Auflösung von 65x64 Pixeln und 32 Einzelbildern. \\
+Die Grundlage für dieses Verfahren bilden zwei Faltungsnetze, die als \textit{Generative Adversarial Networks} (GAN) \cite{NIPS2014_5423} fungieren. Die beiden Netze können als Gegenspieler angesehen werden. Während der Generator $G$ für die Generierung von einer Videosequenz auf Grundlage eines Standbildes zuständig ist, soll der Diskriminator $D$ zwischen den so erzeugten Videos und realen Videosequenzen differenzieren können. Um dies zu erreichen werden beide GANs, wie in Formel 1 des Papers~\cite{VondrickPT16} zu sehen gegeneinander trainiert. Das Minimierungs- bzw. Maximierungsproblem wird hierzu mittels Gradientenverfahren gelöst. \\
+Das Training der beiden Netze erfolgt unüberwacht. Da sich ähnliche Objekte in der Regel auch ähnliche Bewegungsmuster aufweisen, lassen die Autoren das zur Verfügung stehende Videomaterial in Kategorien (Strand, Babys, Golf und Züge) einteilen. Zudem sorgt ein Stabilisierungsalgorithmus dafür, dass bei dem gesamten Testmaterial von einer statischen Kamera ausgegangen werden kann und die zu erlernende Szenendynamik nicht durch eine Bewegung der Kamera verfälscht wird. Für jede dieser Kategorien wird dann ein eigenes Pärchen bestehend aus Generator und Diskriminator trainiert. \\
+Bevor die beiden Faltungsnetze $G$ und $D$ auf die beschriebene Art trainiert werden können, müssen sie erst einmal ihren Aufgaben entsprechend aufgebaut werden. \\
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth]{Bilder/generator2.jpg}
-	\caption{Aufbau Generator nach~\cite{Vondrick}.}
+	\caption{Aufbau Generator nach~\cite{VondrickPT16}.}
 	\label{fig:generator}
 \end{figure}
-
-
+Den Aufbau des Generators, welchen Vondrick et al. genutzt haben, sieht man in Abbildung~\ref{fig:generator}. Im Gegensatz zu dem in Kapitel~\ref{sec:Faltungsnetze} beschriebenen, gewöhnlichen CNN, wird hierbei keine Unterabtastung vorgenommen, sondern die Menge der Daten von Schicht zu Schicht erweitert. Zudem werden die Eingabedaten für die Verarbeitung in zwei Datenströme aufgeteilt. Während in dem eine Strom der statische Hintergrund entsprechend vergrößert wird, wird in dem anderen die Bewegung des sich im Vordergrund befindlichen Objektes vorhergesagt. Beide Teile werden dann am Ausgang nach Formel~\ref{eq:Generator} zusammengefasst.
+\footnotesize
+\begin{equation}
+\begin{aligned}
+G(z) = m(z) \odot f(z) + (1-m(z))\odot b(z)
+\end{aligned}
+	\label{eq:Generator}
+\end{equation}
+\small
+Dafür ist die binäre Maske $m$ so gewählt, dass sie überall den Wert eins hat, wo der Vordergrund übernommen werden soll und ansonsten nur Nullen enthält. \\
+Der Diskriminator hat einen wesentlich simpleren Aufbau, der in Abbildung~\ref{fig:discriminator} zu sehen ist. Dabei muss die Eingabeschicht eben so groß sein, wie die Ausgabeschicht des Generators.\\
 \begin{figure}
 	\flushleft
 	\includegraphics[width=\columnwidth]{Bilder/discriminator.jpg}
-	\caption{Aufbau Diskriminator nach~\cite{Vondrick}.}
+	\caption{Aufbau Diskriminator nach~\cite{VondrickPT16}.}
 	\label{fig:discriminator}
 \end{figure}
+Die Bedeutung für so erzeugte Bewegtbildsequenzen für die Automatisierung der Produktion von Filmen, wird im nächsten Kapitel diskutiert.
 
-\begin{figure}
-	\flushleft
-	\includegraphics[width=\columnwidth]{Bilder/disAndGen.jpg}
-	\caption{Zusammenspiel Diskriminator und Generator.}
-	\label{fig:disAndGen}
-\end{figure}
+
 
 
 
 
 \SubSection{Bewertung des Ansatzes von Vondrick} \label{sec:VondrickConclusion}
 \todo[inline, color=red]{Laura} 
+Das in Bla beschriebene Verfahren schafft es automatisiert aus einem Einzelbild eine kurze und niedrig aufgelöste Bewegtbildsequenz zu erstellen. Hierbei wir vor allem die Szenendynamik in den meisten Fällen annähernd realistisch vorhergesagt, wobei die Modellierung des sich bewegenden Bildinhaltes eher mangelhaft ist. 
 
+
+Quelle der Videos
 Vorteile Verfahren:
 - automatisierte Vorverarbeitung des Lernmaterials möglich
 - Vorverarbeitung muss nur einmal gemacht werden
@@ -252,6 +255,7 @@ Vorteile in Bezug auf Videoproduktion:
 Nachteile:
 - bedarf viel Trainingsmaterial
 - Kategorien ohne Vernunft ausgewählt
+- funktioniert nur für gewwisse Kategorien
 - Realismusgrad nicht ausreichend
 - Es gibt noch keine höhere Auflösung
 

@@ -236,28 +236,8 @@ Die Bedeutung für so erzeugte Bewegtbildsequenzen für die Automatisierung der 
 
 \SubSection{Bewertung des Ansatzes von Vondrick} \label{sec:VondrickConclusion}
 \todo[inline, color=red]{Laura} 
-Das in Bla beschriebene Verfahren schafft es automatisiert aus einem Einzelbild eine kurze und niedrig aufgelöste Bewegtbildsequenz zu erstellen. Hierbei wir vor allem die Szenendynamik in den meisten Fällen annähernd realistisch vorhergesagt, wobei die Modellierung des sich bewegenden Bildinhaltes eher mangelhaft ist. 
-
-
-Quelle der Videos
-Vorteile Verfahren:
-- automatisierte Vorverarbeitung des Lernmaterials möglich
-- Vorverarbeitung muss nur einmal gemacht werden
-- Trainingsmaterial für G kann auch für D genutzt werden
-- Bewegungen werden nach Kategorien gelernt
-
-Vorteile in Bezug auf Videoproduktion:
-- Verständnis der Szenen Dynamik wird wichtiger
-- planen höhere Auflösung
-- Denkbar für Realisierung von bspw. GIFs
-- Simulationen oder Vorhersagen 
-
-Nachteile:
-- bedarf viel Trainingsmaterial
-- Kategorien ohne Vernunft ausgewählt
-- funktioniert nur für gewwisse Kategorien
-- Realismusgrad nicht ausreichend
-- Es gibt noch keine höhere Auflösung
+Das in Kapitel~\ref{sec:Vondrick} beschriebene Verfahren schafft es automatisiert aus einem Einzelbild eine kurze und niedrig aufgelöste Bewegtbildsequenz zu erstellen. Hierbei wir vor allem die Szenendynamik in den meisten Fällen annähernd realistisch vorhergesagt, wobei die Modellierung des sich bewegenden Bildinhaltes eher mangelhaft ist. Trotz des hohen Bedarfs an Trainingsmaterial und den damit verbundenen Zeitaufwand, kann das System ohne menschliche Hilfe eigenständig Kategorisieren, Trainieren und letztendlich Szenendynamiken generieren. Gegen einen Einsatz in der Videoproduktion sprechen die geringe Auflösung und Zeitspanne die bisher abgedeckt werden kann. Zudem kann in einer Szene nicht immer nur von einem sich bewegenden Objekt ausgegangen werden. Und ein trainieren von Netzen für alle denkbaren Kategorien ist sehr aufwendig. Dennoch könnte der Ansatz als Grundlage für einen ausgereifteren Algorithmus dienen, der beispielsweise die Anweisungen des Drehbuchs mit einbezieht und somit eine Generierung von planbareren Szenen ermöglicht. \\
+Der jetzige Stand des Algorithmus könnte beispielsweise für die Generierung von GIFs oder Simulationen genutzt werden. Zudem könnte der Ansatz, mit etwas Anpassung, anstatt Szenendynamiken in Form von Videos darzustellen, Bewegungsvektoren aus einem Standbild vorhersagen und somit in der Videocodierung Einsatz finden. 
 
 
 

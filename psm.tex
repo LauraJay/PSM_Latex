@@ -32,18 +32,18 @@ Technische Hochschule K\"oln \\ Institut f\"ur Medien- und Phototechnik \\ vera.
 
 
 \large{\textbf{Zusammenfassung}}\\ \small %\normalsize
-\todo[inline, color=yellow]{Vera} 
+
 In der Videoproduktion können die Prozesse sehr Zeit- und Kostenaufwändig sein. Aus diesem Grund gilt es Wege zu finden, einzelne Teilprozesse zu automatisieren und optimieren. Gerade in den Teilbereichen Produktion und Postproduktion gibt es ein enormes Potential für eine Automatisierung. Diese Teilbereiche beschäftigen sich überwiegend mit der Erstellung und Bearbeitung von Bild- und Audiodaten. In den letzten Jahren konnten enorme Erfolge in der Bild- und Audiodatenverarbeitung mit Neuronalen Netzen (NN) erzielt werden. Im besonderen erwiesen sich Faltungsnetze (CNN) als zuverlässige und robuste Automatisierungsalgorithmen. Diese CNN können sowohl zur Klassifikation als auch zur Videodatengenerierung genutzt werden.
 \textbf{Es können mit CNN Szenendynamiken aus einem Einzelbild vorhergesagt werden. Zum jetzigen Zeitpunkt ist dies nur mit sehr geringen Auflösung und teilweise fehlerhaft möglich. Die beiden Verfahren \textit{Deep Dream} und \textit{Deep Style} können die Stilsemantik eines Bildes vom Inhalt trennen und auf ein unabhängiges Bild übertragen. \textit{Deep Style} ist ein vielversprechendes Verfahren zur automatischen Stilsynthese, während das \textit{Deep Dream} Verfahren auf Grund mangelnder Reproduzierbarkeit ungeeigneter scheint. Alle vorgestellten Verfahren sind nicht für die Videoproduktion entwickelt worden und werden detailliert beschrieben und auf ihre Tauglichkeit für die professionelle Produktion hin untersucht. }\\
 
 
 \large{\textbf{Schl\"usselw\"orter}}\\ \small %\normalsize
+
  Faltungsnetze, Videoproduktion, Stilsynthese, Bewegtbildgenerierung, Deep Writing
 
 
 
 \Section{Einleitung} \label{sec:Einleitung}
-\todo[inline, color=yellow]{Vera} 
 \textbf{Die Videoproduktion konnte sich im Zuge der Digitalisierung qualitativ enorm verbessern.} Jeder der vier Produktionsabschnitte (siehe Abbildung~\ref{fig:Videoproduktion}) konnte verbessert und nachhaltig erleichtert werden. In der Konzeptionsphase konnten die Arbeitsprozesse mit Hilfe des Internets erleichtert werden durch den beschleunigten weltweiten Austausch von Skripten oder den standort-unabhängigen Zugriff auf cloudbasierte Projektmanagement Systeme. Während der Produktion des Videomaterials unterstützen moderne digitale Kamera- und Produktionssysteme aktiv den Kameramann. Die darauffolgenden Arbeitsprozesse, wie das Schneiden und Editieren des Videomaterials währen der Postproduktionsphase, wurden in den letzten Jahren vereinfacht oder können teilweise durch zuverlässige Algorithmen automatisch durchgeführt werden. Mittlerweile können durch \textit{Computer Generated Imaging} (CGI) Produktionen fast ausschließlich im Studio produziert werden und selbst aufwendige Fantasiewelten oder aufwendige Stunts mit geringeren Kosten und weniger Aufwand umgesetzt werden.
 
 Doch gerade qualitativ hochwertige Videoproduktionen erfordern immer noch einen sehr hohen Arbeitsaufwand mit einer große Anzahl an professionellen Mitarbeitern und kostenaufwändigen Materialien. Einen großen Anteil daran hat die Postproduktion in der jede Szene separat editiert und an das Gesamtbild angepasst werden muss. Dieses Gesamtbild muss vorab genau festgelegt werden und erlaubt keine Experimente in der Stilfindung. Aber auch die Generierung von Bildmaterialien für kurze Schnittszenen oder Webvideos ist sehr zeitaufwändig und kostenintensiv. Ein mehrköpfiges Team mit dem umfangreichen Equipment muss zum Drehort transportiert und untergebracht werden. Auch äußere Einflüsse, wie zum Beispiel das Wetter, können den Zeitplan verzögern und zusätzliche Kosten verursachen. Für Studioaufnahmen müssen in der Regel entsprechende Ressourcen angemietet oder in Stand gehalten werden.
@@ -72,7 +72,6 @@ Der Aufbau der folgenden Ausführungen orientiert sich an Abbildung~\ref{fig:Vid
 
 
 \SubSection{Neuronale Netze} \label{sec:NeuronaleNetze}
-\todo[inline, color=yellow]{Laura} 
 NN finden unter anderem Anwendung bei der Steuerung von Robotern, Börsenkursanalysen, Medizintechnik oder Fahrzeugsteuerung. In der Bildverarbeitung werden NN vor allem zur Klassifizierung genutzt. \\
 Sie sind vom menschlichen Gehirn inspiriert, welches laut~\cite{NNHaykin} ein nicht-lineares, komplexes und hoch paralleles System zur Verarbeitung von Informationen darstellt. Ähnlich wie dieses bestehen künstliche NN aus einer Menge an simulierten Neuronen, die untereinander verbunden sind und in Schichten organisiert sind. Es gibt verschiedene Arten der Vernetzung, die, wie in \cite{NNHaykin} und \cite{NNStanley} beschrieben, in rück- und vorwärts gekoppelte Modelle unterteilt werden können.\\
 \begin{figure}
@@ -114,7 +113,7 @@ Im Allgemeinen wird für eine Faltung eine Filtermaske $h$, also ein endlicher, 
 	\label{eq:Filtermaske}
 \end{equation}
 \small  
-Formel~\ref{eq:Faltung} beschreibt die Faltung eines Eingangssignals $s$ mit einer Filtermaske $h$, wobei I das Ausgangssignal in Abhängigkeit von $x$ und $y$ beschreibt.
+Formel~\ref{eq:Faltung} beschreibt die Faltung eines Eingangssignals $s$ mit einer Filtermaske $h$, wobei $I$ das Ausgangssignal in Abhängigkeit von $x$ und $y$ beschreibt.
 \footnotesize
 \begin{equation}
 \begin{aligned}
@@ -145,11 +144,9 @@ Weil alle Gewichtungen $w$ mittels des \textit{back-propagation} Algorithmus wä
 
 
 \Section{Konzeption} \label{sec:Konzeption}
-\todo[inline, color=yellow]{Vera} 
 Vor der eigentlichen Produktion von Videomaterial muss das Projekt zunächst konzipiert und detailliert geplant werden. Dies bezieht sich vor allem auf die kreativen Prozesse des Drehbuchschreibens und die darauffolgende gesamte Projektplanung und -vorbereitung. Naturgemäß sind NN weniger sinnvoll für die Planung und das Management von Projekten. Doch in den letzten Jahren wurde versucht mit Hilfe von NN kreative Prozesse umzusetzen, wie sie für das Schreiben von Drehbüchern benötigt werden. Es gibt bereits erste Versuche mit Hilfe von NN automatisch sinnvolle Texte und Dialoge zu erstellen, die auf bekannten Texten und Storylines basieren \cite{Thoma16}. Dieses Verfahren wird in der Literatur auch \textit{Deep Writing} genannt. \textbf{Es können auch Romane, Dialoge oder Songtexte automatisch mit einem rückgekoppelten NN erstellt werden~\cite{DrehbuchWrite}.}
 
 \SubSection{Aktueller Stand} \label{sec:SOTAVorverarbeitung}
-\todo[inline, color=yellow]{Vera} 
 \textbf{Ein solches rückgekoppeltes NN wurde mit allen bekannten Episoden der Serie \textit{Silicon Valley} trainiert \cite{DrehbuchSV}}. Zu Beginn des Schreibprozesses wird ein beliebiges Wort genutzt um den ersten Satz zu initialisieren. Das NN sucht im Anschluss das Wort, welches am häufigsten nach dem Startwort in den Trainingsdaten genannt wurde. Mit diesem Wortpaar wird nach dem selben Prinzip das dritte Wort des Textes ermittelt. Dieser Prozess wird solange wiederholt bis der generierte Text die gewünschte Länge erreicht hat \cite{DrehbuchWrite}. Die generierten  grammatikalisch korrekten Sätze beziehungsweise Dialoge ergeben keine sinnvollen Zusammenhänge und folgen keiner ersichtlichen Storyline. Der Film \textit{Sunspring}~\cite{DrehbuchMovie} wurde nach einem ähnlichen Prinzip erstellt und im Anschluss von einem professionellen Filmteam realisiert. Der größte Unterschied zu \cite{DrehbuchSV} ist, dass das NN nicht nur Wörter unterscheidet. Stattdessen wird zunächst alles in Buchstaben zerlegt und dann in neue Wörter und Sätze zusammengesetzt. Das verwendete NN nannte sich selber \textit{Benjamin} und wurde mit einer großen Anzahl an Drehbüchern von Science Fiction Filmen aus den 80er und 90er Jahren trainiert. \textbf{Heraus kam ein Drehbuch, welches qualitativ  mit den Resultaten des ersten Ansatz vergleichbar ist. Ein auffälliges Problem war der korrekte Umgang mit Namen, da diese sprachlich anders behandelt werden. Aus diesem Grund konnten alle Charaktere nur mit einem Buchstaben benannt werden. Dies hatte zur Folge, dass das NN zwei Charaktere gleich benannt hat und sie nachträglich manuell umbenannt werden mussten.}\\
 
 \textbf{Selbst mit einer sehr großen Anzahl von Trainingsdaten konnten keine kohärenten Dialoge generiert werden und keine konstante und neue Storyline verfolgt werden.  Daraus lässt sich ableiten, dass zum jetzigen Zeitpunkt NN große Schwierigkeiten haben neue Ideen zu entwickeln und Erlerntes innerhalb größerer Zusammenhänge sinnvoll zu verknüpfen. Deshalb kann derzeit der Aufwand des Drehbuchschreibens durch NN nicht reduziert werden.}
@@ -212,11 +209,9 @@ Der jetzige Stand des Algorithmus könnte beispielsweise für die Generierung vo
 
 
 \Section{Postproduktion} \label{sec:Postroduktion}
-\todo[inline, color=yellow]{Vera} 
 \textbf{In diesem Kapitel wird die Verwendung von NN in der Postproduktion beschrieben. Gerade in diesem Produktionsabschnitt finden NN eine breites Anwendungsfeld, da die CNN im Bereich der Bildverarbeitung in den letzten Jahre sehr erfolgreich eingesetzt werden konnten. Im ersten Abschnitt werden zunächst die interessantesten auf NN-basierenden Ansätze für Postproduktion vorgestellt und bewertet. Im Anschluss werden zwei Verfahren zur Stilsynthese detailliert beschrieben und für den Einsatz in der professionellen Videoproduktion analysiert. Zuletzt wird ein Ausblick auf Einsatzmöglichkeiten gegeben. }
 
 \SubSection{Aktueller Stand} \label{sec:SOTAPostproduktion}
-\todo[inline, color=yellow]{Vera} 
 \textbf{Für einige Produktionen, wie Dokumentationen oder Nachrichtensendungen, werden \textit{Voice-Over} benötigt.\textbf{ Teilweise werden diese bereits mit sogenannten \textit{Text-to-Speech}- Verfahren produziert, doch die Stimmen klingen meist sehr künstlich. }\\
 Ein vielversprechender Ansatz ist \textit{WaveNet}, welcher im Gegensatz zu den meisten anderen NN-basierten Ansätzen ein CNN verwendet. Dieses wird mit Text- und Audiodatenpaaren von realen Sprechern trainiert und die künstlich erzeugten Stimmen klingen sehr natürlich und menschlich~\cite{OordDZSVGKSK16}.} Das \textit{Deep Voice} Verfahren~\cite{DeepVoice} entwickelt das \textit{WaveNet} Verfahren weiter. Während \textit{WaveNet} mehrere Minuten Rechenzeit benötigt um eine Sekunde an Audiodaten zu generieren, ist \textit{Deep Voice} Realtime-fähig und ein eigenständiges System. Dadurch ist es für die Nutzung in der Videoproduktion interessanter. Einen Vergleich bezüglich der Klangqualitätsunterschiede zwischen den beiden Verfahren gibt es in der Literatur leider nicht.
 \\
@@ -225,7 +220,6 @@ Nachdem alle notwendigen Daten produziert wurden sollten diese gekennzeichnet un
 \textbf{Neben der verbreiteten Klassifikation können CNN auch Bilddaten generieren und den Stil eines Bildes übertragen. Zwei vielversprechende Stilsynthese-Ansätze sind das \textit{Deep Dream}~\cite{DeepDream} und das \textit{Deep Style} Verfahren~\cite{GatysEB15a}. Im Gegensatz zu anderen bekannten Verfahren können diese CNN-basierten Verfahren die gesamte Bildsemantik eindeutig vom Inhalt trennen und mit einem anderen Bildes verschmelzen ohne dessen Inhalt zu verändern~\cite{McCaigDG16}. Diese beiden Verfahren werden in den nächsten Abschnitten genauer beschrieben.}
 
 \SubSection{Faltungsnetze zur Stilsynthese}\label{sec:Stilsynthese}
-\todo[inline, color=yellow]{Vera} 
 Das Verständnis der folgenden Algorithmen in Abschnitt~\ref{sec:DeepDream} und~\ref{sec:DeepStyle} setzt ein grundlegendes Verständnis der Prozesse innerhalb eines CNN voraus. In Abbildung~\ref{fig:CNN} wird deutlich, dass mit jeder Schicht das Bild stärker unterabgetastet wird und die Größe der Merkmalsvektoren stetig steigt. Mit jeder weiteren Schicht wird ein größer Ausschnitt des Bildes erfasst und dessen Merkmale extrahiert. Die Merkmalsvektoren werden größer, da ein größerer Bereich mehr Merkmale enthält und diese folglich immer komplexere Merkmale enthalten. \\
 Im oberen Bereich der Abbildung~\ref{fig:StyleRepresenation} wird veranschaulicht, dass die stilgebenden Merkmale immer mehr der Semantik des Stilbildes annähern. Während in der ersten Schicht die Stilmerkmale sehr klein sind, können in den höherwertigen Schichten Stilelemente aus dem gesamten Bild gefunden werden, wie zum Beispiel die gelben Kreise und die Strudel im Himmel. Im untereren Abbildungsbereich sind die inhaltsbezogenen Merkmale dargestellt. Hier ist die Unterabtastung klar zu erkennen, doch das Gebäude bleibt stets identifizierbar. Die Inhaltsinformationen bleiben trotz der Unterabtastung erhalten.
 
@@ -241,7 +235,6 @@ Ein anderer Ansatz zur Analyse von CNN lässt es selbst entscheiden, welche Merk
 \end{figure}
 
 \SubSection{Deep Dream} \label{sec:DeepDream}
-\todo[inline, color=yellow]{Vera} 
 Der folgende Abschnitt stellt das Stilsynthese-Verfahren \textit{Deep Dream} \cite{DeepDream} vor, welches ein Nebenprodukt des Versuches den Inhalt eines CNN zu visualisieren ist. \textit{Deep Dream} basiert auf einem \textit{GoogLeNet} CNN mit 22 Schichten und fünf Unterabtastungsschichten~\cite{Szegedy_2015_CVPR}. Die Schichten haben eine besondere Architektur, welche \textit{Inception Layer} genannt wird. Mit Hilfe dieser Architektur können auch große Merkmalsvektoren effizient verarbeitet werden. Dieses \textit{GoogLeNet} wird im ersten Schritt mit dem \textit{\textit{ImageNet}}~\cite{ImageNet} Trainingsdatenset trainiert.\\
 An dieser Stelle sei zum besseren Verständnis hinzugefügt, dass ein wichtiger Unterschied zu den bereits bekannten Faltungsnetzmodellen aus Abschnitt~\ref{sec:Faltungsnetze} besteht. Die Schichten zur Klassifizierung sind für die Stilsynthese nicht weiter relevant. Nur die Faltungsschichten werden verwendet, welche die benötigten Merkmalsvektoren extrahieren und speichern.\\
 Zunächst wird das stilgebende Bild, im folgenden Style Source (SS) genannt, bis zu einer beliebigen Faltungsschicht vorwärtspropagiert und der entsprechende Merkmalsvektor als $\vv{f_{GS}}$ gespeichert. Dieser enthält die Merkmale der gewünschten Semantik und steuert die Transformation in Richtung des gewünschten Stils. Würde $\vv{f_{GS}}$ entfallen nähert das CNN die Transformation an die Trainingsdaten an.  Bezogen auf Abschnitt~\ref{sec:Stilsynthese} empfiehlt es sich höhere Schichten zu wählen um eine zufriedenstellendes Synthese zu generieren.\\
@@ -276,7 +269,6 @@ Weiter kann nicht gewährleistet werden die Ergebnisse zu reproduzieren und ähn
 
 
 \SubSection{Deep Style}\label{sec:DeepStyle}
-\todo[inline, color=red]{Vera} 
 Gerade die mangelnde Einflussnahme und die fehlende Reproduzierbarkeit des Nutzers beim \textit{Deep Dream} Verfahren \cite{DeepDream} verlangt nach einer Weiterentwicklung. Diese ist durch das \textit{Deep Style} Verfahren \cite{GatysEB15a} gegeben, welche ein ähnliches Schema verfolgt. Der große Unterschied ist die strikte Trennung und Berücksichtigung von stilgebenden und inhaltsbezogen Informationen, einer erweiterten Fehlerfunktion und der Initialisierung durch ein Bild mit zufälligem Rauschen.\\
 Zusätzlich wird eine andere CNN-Architektur verwendet. Es wird ein trainiertes CNN verwendet, dessen Architektur von der \textit{Visual Geometry Group} entwickelt wurde~\cite{SimonyanZ14a}. Es besteht aus 16-19 Schichten, welche in erster Linie aus $3\times3$ Faltungskernen besteht. Dieses CNN wurde ebenfalls mit dem \textit{ImageNet} Trainingsdatenset~\cite{ImageNet} trainiert.
 
@@ -343,13 +335,11 @@ Der Rechenaufwand steigt exponentiell mit der Bildauflösung. Derzeit ist eine S
 Mit vordefinierten Presets aus trainierten CNN und diversen CS ist auch eine Verwendung im Consumerbereich vorstellbar ohne dass der Nutzer detaillierte Kenntnisse über den Algorithmus besitzen muss. Generell ist das \textit{Deep Style} Verfahren sehr vielversprechend für die Videoproduktion und könnte mit einigen Optimierungen bei der Stilsynthese mit photorealistischen Bildern und der Nutzung einer Renderfarm einige Prozesse in der Postproduktion vereinfachen. 
 
 \SubSection{Ausblick}
-\todo[inline, color=red]{Vera} 
 In der Zukunft kann das \textit{Deep Style} Verfahren für verschiedene Prozesse in der Postproduktion sinnvoll sein. Zunächst sei hier die qualitativ hochwertige und automatische Coloration und Texturierung von animierten Filmen ohne die aufwendige manuelle Texturierung von einzelnen 3D Objekten genannt. \\
 Die Rekonstruktion und Restauration von verlorenen Filmmaterial, wie zum Beispiel \textit{Metropolis} von Fritz Lang ist auch vorstellbar. Da verlorene Szenen nachgestellt und im Anschluss an den Stil der verbliebenen Szenen angepasst werden könnten.\\
 Auch eine individuelle Anpassung an den Geschmack und Stimmung des Nutzers von Filmen ist für \textit{Video-on-Demand} denkbar. Gerade die Farbgebung beeinflusst die Wahrnehmung des Zuschauers. So könnte zum Beispiel die Bedrohlichkeit eines Thrillers verschärft oder minimiert werden. Dasselbe gilt auch für Computerspiele, welche unter Umständen an Geschmack von jüngerem oder erwachsenem Publikum angepasst werden könnte.
 
 \Section{Fazit} \label{Fazit}
-\todo[inline, color=red]{Vera} 
 Die vorgestellten Verfahren befinden sich noch am Anfang ihrer Entwicklung und erfordern noch weitreichende Optimierungen. Gerade der Ansatz zur Generierung von Szenen Dynamiken~\cite{VondrickPT16} scheint noch ausbaufähig zu sein. Dennoch bietet der Ansatz eine Grundlage für weitere Bemühungen in Richtung automatisierter Bewegtbildgenerierung. Zudem kann der Ansatz viele wichtige Erkenntnisse für die Weiterentwicklung von Videokodierungsverfahren liefern.
 
 Das \textit{Deep Dream} Verfahren~\cite{DeepDream} scheint aufgrund nicht reproduzierbarer Ergebnisse und mangelnder Kontrolle durch den Nutzer für eine Verwendung in der Postproduktion uninteressant zu sein. Erfolgversprechender ist dagegen die Weiterentwicklung \textit{Deep Style}, welche die Semantik eines Bilder vom Inhalt trennen und übertragen kann. Nur die Synthese von photorealistischen Bildern enthält noch sichtbare Artefakte.
